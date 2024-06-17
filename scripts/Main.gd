@@ -6,7 +6,6 @@ extends Node2D
 func _ready():
 	var villagers = []
 	for i in range(5):
-		print(i)
 		var villager = mob_scene.instantiate()
 		villager.position = $Player.position
 		villager.position.x += (i + 1) * 50
