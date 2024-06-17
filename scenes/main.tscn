@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://csiqmpcnllfcv"]
+[gd_scene load_steps=4 format=3 uid="uid://csiqmpcnllfcv"]
 
 [ext_resource type="PackedScene" uid="uid://gpk1ye66q77" path="res://prefabs/Player.tscn" id="1_01oqp"]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_ap0ro"]
+[ext_resource type="PackedScene" uid="uid://b5faxla4fhqsr" path="res://prefabs/Villager.tscn" id="2_ybvpi"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ap0ro")
+mob_scene = ExtResource("2_ybvpi")
 
 [node name="Player" parent="." instance=ExtResource("1_01oqp")]
-position = Vector2(248, 423)
+position = Vector2(-79, -24)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(79, 24)
