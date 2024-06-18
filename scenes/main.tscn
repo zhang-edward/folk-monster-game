@@ -9,7 +9,8 @@ script = ExtResource("1_ap0ro")
 mob_scene = ExtResource("2_ybvpi")
 
 [node name="Player" parent="." instance=ExtResource("1_01oqp")]
-position = Vector2(-79, -24)
+position = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(79, 24)
+position_smoothing_enabled = true
