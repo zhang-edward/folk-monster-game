@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coc5hp5fq1vxt"
-path="res://.godot/imported/walk.png-a55dd6466c569c876dd24ba1b050ee72.ctex"
+uid="uid://ex4uqaqidyqa"
+path="res://.godot/imported/MiniPeasant.png-3c7a11b2de68f608edf56f2d34f541e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/walk.png"
-dest_files=["res://.godot/imported/walk.png-a55dd6466c569c876dd24ba1b050ee72.ctex"]
+source_file="res://sprites/villager/MiniPeasant.png"
+dest_files=["res://.godot/imported/MiniPeasant.png-3c7a11b2de68f608edf56f2d34f541e6.ctex"]
 
 [params]
 

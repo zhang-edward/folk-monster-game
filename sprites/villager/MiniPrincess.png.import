@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byqwhim1hp7oi"
-path="res://.godot/imported/attack.png-3ad70120b5d6b8180ffc6922c7d2b9f4.ctex"
+uid="uid://drx8gjumlqn6b"
+path="res://.godot/imported/MiniPrincess.png-252589a8e815b7840cf482901cfc3cfe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/attack.png"
-dest_files=["res://.godot/imported/attack.png-3ad70120b5d6b8180ffc6922c7d2b9f4.ctex"]
+source_file="res://sprites/villager/MiniPrincess.png"
+dest_files=["res://.godot/imported/MiniPrincess.png-252589a8e815b7840cf482901cfc3cfe.ctex"]
 
 [params]
 
