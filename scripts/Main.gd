@@ -8,8 +8,8 @@ func _ready():
 	var villagers = []
 	for i in range(num_villagers):
 		var villager = mob_scene.instantiate()
-		villager.position = $Player.position
-		villager.position.x += (i + 1) * 300
+		villager.global_position = $Player.global_position
+		villager.global_position.x += (i + 1) * 300
 		villagers.append(villager)
 		add_child(villager)
 
