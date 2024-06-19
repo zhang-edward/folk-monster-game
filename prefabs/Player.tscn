@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://gpk1ye66q77"]
+[gd_scene load_steps=31 format=3 uid="uid://gpk1ye66q77"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_l24bt"]
 [ext_resource type="Texture2D" uid="uid://byqwhim1hp7oi" path="res://sprites/player/attack.png" id="2_1xsve"]
 [ext_resource type="Texture2D" uid="uid://coc5hp5fq1vxt" path="res://sprites/player/walk.png" id="2_exd7s"]
+[ext_resource type="Texture2D" uid="uid://dpl3v6f5tdy3d" path="res://sprites/player/slash.png" id="4_c8cps"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxc2s"]
 atlas = ExtResource("2_1xsve")
@@ -151,6 +152,49 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5euw"]
 radius = 46.0109
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1pex"]
+atlas = ExtResource("4_c8cps")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26mcr"]
+atlas = ExtResource("4_c8cps")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddfed"]
+atlas = ExtResource("4_c8cps")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gmjw"]
+atlas = ExtResource("4_c8cps")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7d0j"]
+atlas = ExtResource("4_c8cps")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jepf8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1pex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26mcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddfed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gmjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7d0j")
+}],
+"loop": false,
+"name": &"slash",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_l24bt")
@@ -162,3 +206,10 @@ animation = &"attack"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 26)
 shape = SubResource("CircleShape2D_e5euw")
+
+[node name="Effect" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, 24)
+scale = Vector2(2.593, 3)
+sprite_frames = SubResource("SpriteFrames_jepf8")
+animation = &"slash"
