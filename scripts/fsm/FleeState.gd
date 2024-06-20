@@ -3,7 +3,7 @@ extends State
 @onready var player = get_node("/root/Main/Player") as Player
 const RUN_SPEED = 150
 
-func _physics_process(_delta: float) -> void:
+func update(_delta: float) -> void:
 	var villager = entity as Villager
 	var dist_to_player = villager.global_position.distance_to(player.global_position)
 	if dist_to_player > Villager.FLEE_DIST_THRESHOLD:
@@ -16,7 +16,9 @@ func _physics_process(_delta: float) -> void:
 		else:
 			sprite.flip_h = false
 
-		villager.position += dir * _delta * RUN_SPEED
+		villager.velocity = dir.normalized() * RUN_SPEED
+
+	villager.move_and_slide()
 
 func enter(_msg:={}) -> void:
 	sprite.play("run")

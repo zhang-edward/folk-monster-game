@@ -2,9 +2,16 @@ class_name Player
 extends CharacterBody2D
 
 const SPEED = 300.0
+
 var is_attacking = false
+var hitbox_scene: PackedScene = preload ("res://prefabs/Hitbox.tscn")
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var effect = $Effect
+
+func _ready():
+	animated_sprite.animation_finished.connect(on_attack_complete)
+	animated_sprite.frame_changed.connect(on_attack_frame)
 
 func _physics_process(delta):
 	var direction_x = Input.get_axis("move_left", "move_right")
@@ -41,19 +48,23 @@ func on_attack_complete():
 	is_attacking = false
 	
 func on_attack_frame():
-	if animated_sprite.frame == 4 and is_attacking:
-		var curr_position = animated_sprite.global_position
-		effect.global_position = Vector2(curr_position.x - 50, curr_position.y + 10) \
-			if animated_sprite.flip_h \
-			else Vector2(curr_position.x + 50, curr_position.y + 10)
-		effect.flip_h = animated_sprite.flip_h
-		effect.show()
-		effect.play("slash")
+	if animated_sprite.frame != 4||!is_attacking:
+		return
 
+	var curr_position = animated_sprite.global_position
+	effect.global_position = Vector2(curr_position.x - 50, curr_position.y + 10) \
+		if animated_sprite.flip_h \
+		else Vector2(curr_position.x + 50, curr_position.y + 10)
+	effect.flip_h = animated_sprite.flip_h
+	effect.show()
+	effect.play("slash")
 
-func _unhandled_input(event):
+	var hitbox = hitbox_scene.instantiate()
+	add_child(hitbox)
+	var hitbox_offset = Vector2( - 50, 0) if animated_sprite.flip_h else Vector2(50, 0)
+	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager)
+
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("attack"):
 		animated_sprite.play("attack")
 		is_attacking = true
-		animated_sprite.animation_finished.connect(on_attack_complete)
-		animated_sprite.frame_changed.connect(on_attack_frame)
