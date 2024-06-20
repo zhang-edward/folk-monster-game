@@ -13,7 +13,7 @@ func _ready():
 	animated_sprite.animation_finished.connect(on_attack_complete)
 	animated_sprite.frame_changed.connect(on_attack_frame)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction_x = Input.get_axis("move_left", "move_right")
 	var direction_y = Input.get_axis("move_up", "move_down")
 	if direction_x:
