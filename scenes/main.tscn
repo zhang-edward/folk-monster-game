@@ -88,8 +88,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/GUI"]
+[node name="Label" type="Label" parent="CanvasLayer/GUI" node_paths=PackedStringArray("_main_scene")]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("5_dsu88")
+_main_scene = NodePath("../../..")
+
+[node name="RoundTimer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
