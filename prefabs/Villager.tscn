@@ -125,17 +125,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lihtq"]
 radius = 6.0
 
-[node name="Villager" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 2
+[node name="Villager" type="CharacterBody2D"]
 script = ExtResource("1_7tvhq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_w5vps")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
-frame_progress = 0.920714
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)

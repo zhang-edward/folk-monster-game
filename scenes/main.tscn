@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://csiqmpcnllfcv"]
+[gd_scene load_steps=8 format=3 uid="uid://csiqmpcnllfcv"]
 
 [ext_resource type="PackedScene" uid="uid://gpk1ye66q77" path="res://prefabs/Player.tscn" id="1_01oqp"]
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_ap0ro"]
 [ext_resource type="PackedScene" uid="uid://b5faxla4fhqsr" path="res://prefabs/Villager.tscn" id="2_ybvpi"]
 [ext_resource type="Texture2D" uid="uid://bav18ws74tw8e" path="res://sprites/tilemap/Tileset.png" id="4_kj8xi"]
+[ext_resource type="Script" path="res://scripts/DebugLabel.gd" id="5_dsu88"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwxxk"]
 texture = ExtResource("4_kj8xi")
@@ -76,3 +77,19 @@ limit_left = -1520
 limit_top = -1168
 limit_right = 1424
 limit_bottom = 1424
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("5_dsu88")
