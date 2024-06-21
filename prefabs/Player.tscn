@@ -1,9 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://gpk1ye66q77"]
+[gd_scene load_steps=34 format=3 uid="uid://gpk1ye66q77"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_l24bt"]
 [ext_resource type="Texture2D" uid="uid://byqwhim1hp7oi" path="res://sprites/player/attack.png" id="2_1xsve"]
 [ext_resource type="Texture2D" uid="uid://coc5hp5fq1vxt" path="res://sprites/player/walk.png" id="2_exd7s"]
 [ext_resource type="Texture2D" uid="uid://dpl3v6f5tdy3d" path="res://sprites/player/slash.png" id="4_c8cps"]
+[ext_resource type="Script" path="res://scripts/fsm/StateMachine.gd" id="5_2s8mp"]
+[ext_resource type="Script" path="res://scripts/fsm/MoveState.gd" id="6_687w4"]
+[ext_resource type="Script" path="res://scripts/fsm/MeleeAttackState.gd" id="7_teqfg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxc2s"]
 atlas = ExtResource("2_1xsve")
@@ -192,14 +195,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"slash",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_l24bt")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qrrq2")
 animation = &"attack"
 
@@ -209,7 +212,16 @@ shape = SubResource("CircleShape2D_e5euw")
 
 [node name="Effect" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(1, 24)
 scale = Vector2(2.593, 3)
 sprite_frames = SubResource("SpriteFrames_jepf8")
 animation = &"slash"
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_2s8mp")
+initial_state = NodePath("Move")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("6_687w4")
+
+[node name="MeleeAttack" type="Node" parent="StateMachine"]
+script = ExtResource("7_teqfg")
