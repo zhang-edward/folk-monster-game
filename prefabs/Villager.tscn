@@ -1,13 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5faxla4fhqsr"]
+[gd_scene load_steps=9 format=3 uid="uid://b5faxla4fhqsr"]
 
 [ext_resource type="Script" path="res://scripts/Villager.gd" id="1_7tvhq"]
 [ext_resource type="SpriteFrames" uid="uid://bfr1iahf6ngj5" path="res://animations/Villager1.tres" id="2_x5ed0"]
 [ext_resource type="Script" path="res://scripts/fsm/StateMachine.gd" id="3_dewl8"]
 [ext_resource type="Script" path="res://scripts/fsm/IdleState.gd" id="4_c5nv6"]
 [ext_resource type="Script" path="res://scripts/fsm/FleeState.gd" id="5_yd4qx"]
+[ext_resource type="AudioStream" uid="uid://c1t06gav0qjiu" path="res://sfx/slash.wav" id="6_aoio5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lihtq"]
 radius = 6.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pq078"]
+streams_count = 1
+random_pitch = 1.5
+stream_0/stream = ExtResource("6_aoio5")
+stream_0/weight = 1.0
 
 [node name="Villager" type="CharacterBody2D"]
 script = ExtResource("1_7tvhq")
@@ -31,3 +38,6 @@ script = ExtResource("4_c5nv6")
 
 [node name="Flee" type="Node" parent="StateMachine"]
 script = ExtResource("5_yd4qx")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_pq078")

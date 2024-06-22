@@ -13,13 +13,20 @@ var _effect_scene = preload ("res://prefabs/Effect.tscn")
 var _blood_splatter: SpriteFrames = preload ("res://animations/BloodSplatter.tres")
 var _blood_splatter_particles: PackedScene = preload ("res://prefabs/BloodSplatterParticles.tscn")
 
+var _health = 100
+
 func _ready():
 	var villager_num = randi() % 3 + 1
 	print(villager_num)
 	_sprite.frames = load("res://animations/Villager" + str(villager_num) + ".tres")
 
-func damage():
-	_player_variables.player_score += 1
+func damage(amt: int):
+	_health -= amt
+
+	# SFX
+	$HitSound.play()
+
+	# Graphics
 	var effect = _effect_scene.instantiate() as AnimatedSprite2D
 	effect.sprite_frames = _blood_splatter
 	effect.modulate = Color.RED
@@ -35,8 +42,10 @@ func damage():
 	particles.emitting = true
 	add_sibling(particles)
 
-	var corpse = _corpse_scene.instantiate() as Corpse
-	add_sibling(corpse)
-	var v = Vector2(randf() * 200 - 100, randf() * 200 - 100)
-	corpse.init(global_position, v, _sprite.sprite_frames.get_frame_texture("die", 0))
-	queue_free()
+	if (_health <= 0):
+		_player_variables.player_score += 1
+		var corpse = _corpse_scene.instantiate() as Corpse
+		add_sibling(corpse)
+		var v = Vector2(randf() * 200 - 100, randf() * 200 - 100)
+		corpse.init(global_position, v, _sprite.sprite_frames.get_frame_texture("die", 0))
+		queue_free()
