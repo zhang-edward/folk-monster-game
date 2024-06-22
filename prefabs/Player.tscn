@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://gpk1ye66q77"]
+[gd_scene load_steps=37 format=3 uid="uid://gpk1ye66q77"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_l24bt"]
 [ext_resource type="Texture2D" uid="uid://byqwhim1hp7oi" path="res://sprites/player/attack.png" id="2_1xsve"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://scripts/fsm/StateMachine.gd" id="5_2s8mp"]
 [ext_resource type="Script" path="res://scripts/fsm/MoveState.gd" id="6_687w4"]
 [ext_resource type="Script" path="res://scripts/fsm/MeleeAttackState.gd" id="7_teqfg"]
+[ext_resource type="Script" path="res://scripts/fsm/AcidSpitAttack.gd" id="8_wo514"]
+[ext_resource type="Script" path="res://scripts/fsm/FireBreathAttack.gd" id="9_4ds65"]
+[ext_resource type="Script" path="res://scripts/fsm/Lunge.gd" id="10_da2xk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxc2s"]
 atlas = ExtResource("2_1xsve")
@@ -225,3 +228,12 @@ script = ExtResource("6_687w4")
 
 [node name="MeleeAttack" type="Node" parent="StateMachine"]
 script = ExtResource("7_teqfg")
+
+[node name="AcidSpitAttack" type="Node" parent="StateMachine"]
+script = ExtResource("8_wo514")
+
+[node name="FireBreathAttack" type="Node" parent="StateMachine"]
+script = ExtResource("9_4ds65")
+
+[node name="Lunge" type="Node" parent="StateMachine"]
+script = ExtResource("10_da2xk")

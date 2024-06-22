@@ -70,6 +70,7 @@ offset_right = 37.5
 offset_bottom = 44.0
 grow_horizontal = 2
 text = "Power Up"
+horizontal_alignment = 1
 
 [node name="SelectButton" type="Button" parent="CanvasLayer/Control/HBoxContainer/PowerUp"]
 layout_mode = 1
@@ -179,6 +180,7 @@ offset_right = 37.5
 offset_bottom = 44.0
 grow_horizontal = 2
 text = "Power Up"
+horizontal_alignment = 1
 
 [node name="SelectButton" type="Button" parent="CanvasLayer/Control/HBoxContainer/PowerUp3"]
 layout_mode = 1
@@ -216,6 +218,6 @@ text = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp/SelectButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp2/SelectButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp3/SelectButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp/SelectButton" to="CanvasLayer/Control/HBoxContainer/PowerUp" method="select_powerup"]
+[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp2/SelectButton" to="CanvasLayer/Control/HBoxContainer/PowerUp2" method="select_powerup"]
+[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp3/SelectButton" to="CanvasLayer/Control/HBoxContainer/PowerUp3" method="select_powerup"]
