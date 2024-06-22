@@ -1,0 +1,49 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bxpbfos85xa3g"]
+
+[ext_resource type="Texture2D" uid="uid://c1vdeygh181xc" path="res://sprites/villager/villager4.png" id="1_uk601"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgesi"]
+atlas = ExtResource("1_uk601")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfalm"]
+atlas = ExtResource("1_uk601")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b7lt"]
+atlas = ExtResource("1_uk601")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weljb"]
+atlas = ExtResource("1_uk601")
+region = Rect2(48, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgesi")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfalm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b7lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weljb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
