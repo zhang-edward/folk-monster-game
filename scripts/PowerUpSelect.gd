@@ -29,21 +29,24 @@ const POWER_UPS = [
 		"cost": 2
 	},
 	{
-		"name": "AcidSpit",
+		"name": "Acid Spit",
 		"type": PlayerVariables.PowerUpTypes.AcidSpit,
-		"description": "Launch a fireball forward",
+		"description": "Launch an acid ball forward",
+		"upgradeDescription": "Launch 1 more acid",
 		"cost": 3
 	},
 	{
 		"name": "Lunge",
 		"type": PlayerVariables.PowerUpTypes.Lunge,
 		"description": "Charge forward rapidly",
+		"upgradeDescription": "Lunge further",
 		"cost": 3
 	},
 	{
-		"name": "FireBreath",
+		"name": "Fire Breath",
 		"type": PlayerVariables.PowerUpTypes.FireBreath,
 		"description": "Breath a cone of fire in front of you",
+		"upgradeDescription": "Impact a wider area of effect",
 		"cost": 3
 	}
 ]
@@ -57,6 +60,11 @@ func _ready():
 		var power_up = random_powerups[i]
 		var power_up_box = power_up_boxes[i]
 		power_up_box.init_powerup(power_up)
+		
+func on_select_powerup(power_up):
+	_player_variables.player_powerup_levels[power_up.type] += 1
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	pass # Replace with function body.
