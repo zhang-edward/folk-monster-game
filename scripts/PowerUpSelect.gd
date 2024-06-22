@@ -60,11 +60,10 @@ func _ready():
 		var power_up = random_powerups[i]
 		var power_up_box = power_up_boxes[i]
 		power_up_box.init_powerup(power_up)
+	PlayerVariables.player_score_updated.connect(on_score_updated)
 		
-func on_select_powerup(power_up):
-	_player_variables.player_powerup_levels[power_up.type] += 1
+func on_score_updated():
+	score.text = "Available Points: " + str(_player_variables.player_score)
+
+func on_continue():
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
-
-
-func _on_button_pressed():
-	pass # Replace with function body.

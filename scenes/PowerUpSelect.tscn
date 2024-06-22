@@ -218,6 +218,22 @@ text = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="ContinueButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -158.0
+offset_right = 71.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continue"
+
 [connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp/SelectButton" to="CanvasLayer/Control/HBoxContainer/PowerUp" method="select_powerup"]
 [connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp2/SelectButton" to="CanvasLayer/Control/HBoxContainer/PowerUp2" method="select_powerup"]
 [connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp3/SelectButton" to="CanvasLayer/Control/HBoxContainer/PowerUp3" method="select_powerup"]
+[connection signal="pressed" from="CanvasLayer/Control/ContinueButton" to="." method="on_continue"]
