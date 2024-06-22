@@ -2,9 +2,8 @@ extends Node2D
 
 @export var mob_scene: PackedScene
 @export var num_villagers = 10
-
-@onready var round_timer: Timer = $RoundTimer
 @onready var time_remaining_label = $CanvasLayer/GUI/TimeRemaining as Label
+@onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
 
 const TIME_LIMIT_SECONDS = 10
 var time_remaining
@@ -20,8 +19,6 @@ func _ready():
 		villagers.append(villager)
 		add_child(villager)
 	
-	# Start the round timer
-	round_timer.start()
 	# Set a time limit for the night
 	time_remaining = TIME_LIMIT_SECONDS
 	time_remaining_label.text = "Time remaining: " + str(time_remaining)

@@ -7,5 +7,3 @@ extends Label
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	text = "Score: " + str(_player_variables.player_score)
-	if _main_scene != null:
-		text += "\nRound: " + str(_main_scene.round_timer.time_left)
