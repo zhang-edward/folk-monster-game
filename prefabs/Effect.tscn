@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkfa80a1j2p8s"]
+
+[ext_resource type="SpriteFrames" uid="uid://bhnnu5su83gqn" path="res://animations/BloodSplatter.tres" id="1_cyhx2"]
+[ext_resource type="Script" path="res://scripts/Effect.gd" id="2_ivg64"]
+
+[node name="Effect" type="AnimatedSprite2D"]
+modulate = Color(0.760784, 0.0823529, 0.105882, 1)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_cyhx2")
+frame = 6
+frame_progress = 1.0
+offset = Vector2(2.08165e-12, -32)
+script = ExtResource("2_ivg64")

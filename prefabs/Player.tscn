@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://gpk1ye66q77"]
+[gd_scene load_steps=46 format=3 uid="uid://gpk1ye66q77"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_l24bt"]
 [ext_resource type="Texture2D" uid="uid://dimvafecqheci" path="res://sprites/player/beast.png" id="2_ax2r0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/fsm/AcidSpitAttack.gd" id="8_wo514"]
 [ext_resource type="Script" path="res://scripts/fsm/FireBreathAttack.gd" id="9_4ds65"]
 [ext_resource type="Script" path="res://scripts/fsm/Lunge.gd" id="10_da2xk"]
+[ext_resource type="Texture2D" path="res://sprites/neutral_light.webp" id="10_oitew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3gi7p"]
 atlas = ExtResource("2_ax2r0")
@@ -312,3 +313,8 @@ script = ExtResource("9_4ds65")
 
 [node name="Lunge" type="Node" parent="StateMachine"]
 script = ExtResource("10_da2xk")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.3
+texture = ExtResource("10_oitew")
+texture_scale = 2.0

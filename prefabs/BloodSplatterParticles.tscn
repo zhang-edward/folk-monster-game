@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb8s6ccsm8grf"]
+[gd_scene load_steps=3 format=3 uid="uid://cew0y7c7p2ccs"]
 
-[ext_resource type="Texture2D" path="res://sprites/blood.png" id="1_evs5m"]
-[ext_resource type="Script" path="res://scripts/BloodSplatterParticles.gd" id="2_rd8ur"]
+[ext_resource type="Texture2D" uid="uid://byqmlvrqqxw83" path="res://sprites/blood.png" id="1_evs5m"]
 
 [sub_resource type="Gradient" id="Gradient_5yo5l"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.560784, 0, 0, 1, 1, 1, 1, 1)
 
 [node name="BloodSplatterParticles" type="CPUParticles2D"]
 z_index = -20
-position = Vector2(-4.33681e-19, -2.1684e-19)
+position = Vector2(2.08165e-12, 2.08165e-12)
 rotation = 0.00222609
 emitting = false
-amount = 20
+amount = 50
 lifetime = 5.0
 one_shot = true
 speed_scale = 4.0
 explosiveness = 1.0
+lifetime_randomness = 1.0
 texture = ExtResource("1_evs5m")
 emission_shape = 1
 emission_sphere_radius = 30.0
@@ -30,4 +30,3 @@ scale_amount_min = 2.0
 scale_amount_max = 4.0
 color = Color(0.792157, 0, 0.145098, 1)
 color_initial_ramp = SubResource("Gradient_5yo5l")
-script = ExtResource("2_rd8ur")
