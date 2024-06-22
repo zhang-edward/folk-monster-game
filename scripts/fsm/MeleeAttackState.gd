@@ -5,6 +5,8 @@ extends State
 const SPEED = 150.0
 
 var hitbox_scene: PackedScene = preload ("res://prefabs/Hitbox.tscn")
+var _attack_hand = ""
+var _attack_number = ""
 
 func update(_delta: float) -> void:
 	var player = entity as Player
@@ -17,8 +19,19 @@ func update(_delta: float) -> void:
 		sprite.flip_h = false
 	player.move_and_slide()
 
-func enter(_msg:={}) -> void:
-	sprite.play("attack")
+func enter(msg:={}) -> void:
+	_attack_hand = msg["last_attack_hand"] if msg.has("last_attack_hand") else null
+
+	if _attack_hand == null:
+		_attack_hand = "r" if randf() < 0.5 else "l"
+	elif _attack_hand == "r":
+		_attack_hand = "l"
+	else:
+		_attack_hand = "r"
+
+	_attack_number = "1" if randf() < 0.5 else "2"
+
+	sprite.play("attack_" + _attack_hand + _attack_number)
 	sprite.animation_finished.connect(on_attack_complete)
 	sprite.frame_changed.connect(on_attack_frame)
 
@@ -27,7 +40,7 @@ func exit() -> void:
 	sprite.frame_changed.disconnect(on_attack_frame)
 
 func on_attack_frame():
-	if sprite.frame != 4:
+	if sprite.frame != ATTACK_FRAME:
 		return
 
 	var player = entity as Player
@@ -35,7 +48,7 @@ func on_attack_frame():
 	player.effect.position = effect_offset
 	player.effect.flip_h = sprite.flip_h
 	player.effect.show()
-	player.effect.play("slash")
+	player.effect.play("slash_" + _attack_hand + _attack_number)
 
 	var hitbox = hitbox_scene.instantiate()
 	player.add_child(hitbox)
@@ -43,4 +56,7 @@ func on_attack_frame():
 	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager)
 
 func on_attack_complete():
-	state_machine.transition_to("Move", {})
+	if Input.is_action_pressed("attack"):
+		state_machine.transition_to("MeleeAttack", {"last_attack_hand": _attack_hand})
+	else:
+		state_machine.transition_to("Move", {})
