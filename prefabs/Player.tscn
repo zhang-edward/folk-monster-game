@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/fsm/AcidSpitAttack.gd" id="8_wo514"]
 [ext_resource type="Script" path="res://scripts/fsm/FireBreathAttack.gd" id="9_4ds65"]
 [ext_resource type="Script" path="res://scripts/fsm/Lunge.gd" id="10_da2xk"]
-[ext_resource type="Texture2D" path="res://sprites/neutral_light.webp" id="10_oitew"]
+[ext_resource type="Texture2D" uid="uid://b4b7qd80h8ad5" path="res://sprites/neutral_light.webp" id="10_oitew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3gi7p"]
 atlas = ExtResource("2_ax2r0")

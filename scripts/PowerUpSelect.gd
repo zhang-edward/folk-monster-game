@@ -4,9 +4,9 @@ extends Node2D
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
 @onready var score = $CanvasLayer/Control/Score as Label
 @onready var power_up_boxes: Array[PowerUpBox] = [
-	$CanvasLayer/Control/HBoxContainer/PowerUp as PowerUpBox,
-	$CanvasLayer/Control/HBoxContainer/PowerUp2 as PowerUpBox,
-	$CanvasLayer/Control/HBoxContainer/PowerUp3 as PowerUpBox
+	%PowerUp as PowerUpBox,
+	%PowerUp2 as PowerUpBox,
+	%PowerUp3 as PowerUpBox
 ]
 
 const POWER_UPS = [
