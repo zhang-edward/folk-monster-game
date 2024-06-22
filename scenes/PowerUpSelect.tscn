@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmmot5etbhluq"]
+[gd_scene load_steps=9 format=3 uid="uid://bmmot5etbhluq"]
 
 [ext_resource type="Script" path="res://scripts/PowerUpSelect.gd" id="1_4xnrr"]
 [ext_resource type="Script" path="res://scripts/PowerUpBox.gd" id="2_l73ih"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/DialogueBox.gd" id="3_5uakd"]
 [ext_resource type="Texture2D" uid="uid://bdtfoitttphe3" path="res://sprites/art/old_man_storytelling.png" id="3_kty17"]
 [ext_resource type="Texture2D" uid="uid://c5id0egdocnqy" path="res://sprites/blood_splatter1.png" id="4_1hdir"]
+[ext_resource type="AudioStream" uid="uid://drqthui4xkd4h" path="res://sfx/old_man_talking.wav" id="7_eo563"]
+[ext_resource type="AudioStream" uid="uid://dsdtbcva183pg" path="res://music/PerituneMaterial_Creep_loop.ogg" id="7_oad7q"]
 
 [node name="PowerUpSelect" type="Node2D"]
 script = ExtResource("1_4xnrr")
@@ -244,7 +246,7 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Continue"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
+[node name="DialogueBox" type="RichTextLabel" parent="CanvasLayer/Control" node_paths=PackedStringArray("voice")]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
@@ -255,6 +257,10 @@ theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "test"
 script = ExtResource("3_5uakd")
+voice = NodePath("../../../OldManVoice")
+
+[node name="VoiceTimer" type="Timer" parent="CanvasLayer/Control/DialogueBox"]
+wait_time = 0.1
 
 [node name="OldManStorytelling" type="Sprite2D" parent="."]
 position = Vector2(168, 451)
@@ -268,6 +274,15 @@ position = Vector2(515, 204)
 scale = Vector2(150, 150)
 texture = ExtResource("4_1hdir")
 metadata/_edit_lock_ = true
+
+[node name="OldManVoice" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_eo563")
+volume_db = -2.343
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_oad7q")
+volume_db = -6.09
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp/SelectButton" to="CanvasLayer/Control/HBoxContainer/PowerUp" method="select_powerup"]
 [connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/PowerUp2/SelectButton" to="CanvasLayer/Control/HBoxContainer/PowerUp2" method="select_powerup"]
