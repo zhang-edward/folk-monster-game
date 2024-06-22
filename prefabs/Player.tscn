@@ -50,21 +50,21 @@ region = Rect2(336, 0, 48, 48)
 atlas = ExtResource("2_ax2r0")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jn6o4"]
-atlas = ExtResource("2_ax2r0")
-region = Rect2(0, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtou1"]
 atlas = ExtResource("2_ax2r0")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ft2r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn6o4"]
 atlas = ExtResource("2_ax2r0")
-region = Rect2(96, 0, 48, 48)
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7p6m"]
 atlas = ExtResource("2_ax2r0")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ft2r"]
+atlas = ExtResource("2_ax2r0")
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qrrq2"]
 animations = [{
@@ -122,16 +122,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jn6o4")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_rtou1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3ft2r")
+"texture": SubResource("AtlasTexture_jn6o4")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y7p6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ft2r")
 }],
 "loop": true,
 "name": &"walk",
@@ -139,7 +139,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5euw"]
-radius = 46.0109
+radius = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3tfg4"]
 atlas = ExtResource("3_gcvvk")
@@ -283,9 +283,10 @@ script = ExtResource("1_l24bt")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qrrq2")
-animation = &"attack_r1"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 23)
 shape = SubResource("CircleShape2D_e5euw")
 
 [node name="Effect" type="AnimatedSprite2D" parent="."]
