@@ -13,3 +13,9 @@ var player_powerup_levels = {
 	PowerUpTypes.DefenseUp: 0,
 	PowerUpTypes.SpeedUp: 0
 }
+
+signal player_score_updated
+
+func update_player_score(new_player_score):
+	player_score = new_player_score
+	player_score_updated.emit()
