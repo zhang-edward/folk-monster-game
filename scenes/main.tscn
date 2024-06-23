@@ -1,15 +1,15 @@
-[gd_scene load_steps=28 format=3 uid="uid://csiqmpcnllfcv"]
+[gd_scene load_steps=30 format=3 uid="uid://csiqmpcnllfcv"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_ak77v"]
 [ext_resource type="Script" path="res://scripts/DayNight.gd" id="2_sfewf"]
 [ext_resource type="Texture2D" uid="uid://b2mmxcs6xr401" path="res://sprites/tilemap/Tileset_Ground.png" id="3_fk8lj"]
 [ext_resource type="Texture2D" uid="uid://fey3h1q7hv5a" path="res://sprites/tilemap/Tileset_Road.png" id="4_ude77"]
 [ext_resource type="PackedScene" uid="uid://gpk1ye66q77" path="res://prefabs/Player.tscn" id="5_7r1f8"]
-[ext_resource type="FontFile" uid="uid://13j87krg6v02" path="res://MorrisRoman-Black.ttf" id="6_if7k2"]
 [ext_resource type="Script" path="res://scripts/DebugLabel.gd" id="6_m8pk2"]
 [ext_resource type="Script" path="res://scripts/PlayerHealthBar.gd" id="7_l0nsv"]
 [ext_resource type="Texture2D" uid="uid://cw363g4326dph" path="res://sprites/props/Lamp_1.png" id="7_v3l3g"]
 [ext_resource type="Texture2D" uid="uid://b4b7qd80h8ad5" path="res://sprites/neutral_light.webp" id="8_01ebi"]
+[ext_resource type="FontFile" uid="uid://13j87krg6v02" path="res://MorrisRoman-Black.ttf" id="8_sq5i3"]
 [ext_resource type="Texture2D" uid="uid://dbc02gojuxydj" path="res://sprites/props/Barrel_2.png" id="9_erbxg"]
 [ext_resource type="Texture2D" uid="uid://behvm3ntp4r64" path="res://sprites/props/Bench_1.png" id="10_kj3jd"]
 [ext_resource type="Texture2D" uid="uid://465dx88rif2w" path="res://sprites/props/Bulletin_Board.png" id="11_1f37n"]
@@ -540,6 +540,40 @@ terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_qqu6x")
 sources/2 = SubResource("TileSetAtlasSource_k8jan")
 
+[sub_resource type="Animation" id="Animation_qwaxp"]
+resource_name = "fade_in"
+length = 8.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 5, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cdd6a"]
+_data = {
+"fade_in": SubResource("Animation_qwaxp")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_538ni"]
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 4
@@ -613,13 +647,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="SceneAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+root_node = NodePath("../DayOverText")
+libraries = {
+"": SubResource("AnimationLibrary_cdd6a")
+}
+
 [node name="Score" type="Label" parent="CanvasLayer/GUI" node_paths=PackedStringArray("_main_scene")]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 20.0
 offset_right = 68.0
 offset_bottom = 45.0
-theme_override_fonts/font = ExtResource("6_if7k2")
+theme_override_fonts/font = ExtResource("8_sq5i3")
 theme_override_font_sizes/font_size = 25
 script = ExtResource("6_m8pk2")
 _main_scene = NodePath("../../..")
@@ -634,7 +675,7 @@ offset_top = 20.0
 offset_right = -31.0
 offset_bottom = 43.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("6_if7k2")
+theme_override_fonts/font = ExtResource("8_sq5i3")
 theme_override_font_sizes/font_size = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI"]
@@ -663,6 +704,30 @@ value = 20.0
 show_percentage = false
 script = ExtResource("7_l0nsv")
 player = NodePath("../../../../Player")
+
+[node name="DayOverText" type="RichTextLabel" parent="CanvasLayer/GUI"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.5
+offset_top = -88.0
+offset_right = 275.5
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("8_sq5i3")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center][wave freq=4 amp=30]The sun has risen...
+
+Your hunt has concluded
+"
+fit_content = true
 
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 120.0
