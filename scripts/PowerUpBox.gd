@@ -10,12 +10,6 @@ extends ColorRect
 var power_up = null
 var power_up_cost = 0
 
-const ABILITY_TYPES = [
-	PlayerVariables.PowerUpTypes.AcidSpit,
-	PlayerVariables.PowerUpTypes.FireBreath,
-	PlayerVariables.PowerUpTypes.Lunge,
-]
-
 func _ready():
 	PlayerVariables.player_score_updated.connect(on_player_score_updated)
 	
