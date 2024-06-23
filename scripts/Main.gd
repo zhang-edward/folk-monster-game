@@ -12,10 +12,8 @@ var time_remaining
 
 func _process(_delta):
 	# Prevent the player from going out of bounds of the camera's limits.
-	print(player.position)
 	player.position.x = clamp(player.position.x, camera.limit_left, camera.limit_right)
 	player.position.y = clamp(player.position.y, camera.limit_top, camera.limit_bottom)
-	print(camera.limit_bottom)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
