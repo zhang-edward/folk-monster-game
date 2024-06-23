@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://csiqmpcnllfcv"]
+[gd_scene load_steps=28 format=3 uid="uid://csiqmpcnllfcv"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_ak77v"]
 [ext_resource type="Script" path="res://scripts/DayNight.gd" id="2_sfewf"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://gpk1ye66q77" path="res://prefabs/Player.tscn" id="5_7r1f8"]
 [ext_resource type="FontFile" uid="uid://13j87krg6v02" path="res://MorrisRoman-Black.ttf" id="6_if7k2"]
 [ext_resource type="Script" path="res://scripts/DebugLabel.gd" id="6_m8pk2"]
+[ext_resource type="Script" path="res://scripts/PlayerHealthBar.gd" id="7_l0nsv"]
 [ext_resource type="Texture2D" uid="uid://cw363g4326dph" path="res://sprites/props/Lamp_1.png" id="7_v3l3g"]
 [ext_resource type="Texture2D" uid="uid://b4b7qd80h8ad5" path="res://sprites/neutral_light.webp" id="8_01ebi"]
 [ext_resource type="Texture2D" uid="uid://dbc02gojuxydj" path="res://sprites/props/Barrel_2.png" id="9_erbxg"]
@@ -16,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b2sfctt82rd4r" path="res://sprites/village/House_Hay_Stone_2.png" id="13_jm2w6"]
 [ext_resource type="Texture2D" uid="uid://bswbkx7dmi0o6" path="res://sprites/village/House_Hay_Stone_3.png" id="14_u20ql"]
 [ext_resource type="AudioStream" uid="uid://dceambxnfrwff" path="res://music/Ossuary 4 - Animate.mp3" id="15_2hguf"]
-[ext_resource type="PackedScene" uid="uid://dwihblou20q0s" path="res://prefabs/VillagerSpawner.tscn" id="17_a0n03"]
+[ext_resource type="PackedScene" path="res://prefabs/VillagerSpawner.tscn" id="17_a0n03"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qqu6x"]
 texture = ExtResource("3_fk8lj")
@@ -539,6 +540,23 @@ terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_qqu6x")
 sources/2 = SubResource("TileSetAtlasSource_k8jan")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_538ni"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68c0m"]
+bg_color = Color(0.568627, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elxd6"]
 size = Vector2(12.6667, 28)
 
@@ -618,6 +636,33 @@ offset_bottom = 43.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("6_if7k2")
 theme_override_font_sizes/font_size = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -122.0
+offset_right = 264.0
+offset_bottom = -58.0
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/GUI/VBoxContainer"]
+layout_mode = 2
+text = "Health
+"
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/GUI/VBoxContainer" node_paths=PackedStringArray("player")]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_538ni")
+theme_override_styles/fill = SubResource("StyleBoxFlat_68c0m")
+value = 20.0
+show_percentage = false
+script = ExtResource("7_l0nsv")
+player = NodePath("../../../../Player")
 
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 120.0
