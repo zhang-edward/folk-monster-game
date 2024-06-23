@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/Corpse.gd" id="1_8brep"]
 [ext_resource type="AudioStream" uid="uid://c75e2xbsbsye8" path="res://sfx/323526__kreastricon62__bloody-blade-2.wav" id="2_2g4lk"]
-[ext_resource type="AudioStream" uid="uid://blbwxe23j0mj4" path="res://sfx/hurt_m2.wav" id="3_ei85i"]
-[ext_resource type="AudioStream" uid="uid://cmgpwx5ssih80" path="res://sfx/hurt_m1.wav" id="4_kqdur"]
-[ext_resource type="AudioStream" uid="uid://b25wsreprofem" path="res://sfx/scream_f1.wav" id="5_7n1oh"]
-[ext_resource type="AudioStream" uid="uid://cu8m1g433c567" path="res://sfx/scream_m1.wav" id="6_msejx"]
-[ext_resource type="AudioStream" uid="uid://syen7l64712e" path="res://sfx/scream_m2.wav" id="7_bm3rt"]
+[ext_resource type="AudioStream" path="res://sfx/hurt_m2.wav" id="3_ei85i"]
+[ext_resource type="AudioStream" path="res://sfx/hurt_m1.wav" id="4_kqdur"]
+[ext_resource type="AudioStream" path="res://sfx/scream_f1.wav" id="5_7n1oh"]
+[ext_resource type="AudioStream" path="res://sfx/scream_m1.wav" id="6_msejx"]
+[ext_resource type="AudioStream" path="res://sfx/scream_m2.wav" id="7_bm3rt"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qgvb6"]
 streams_count = 1
