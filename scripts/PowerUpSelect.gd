@@ -84,4 +84,4 @@ func on_score_updated():
 	score.text = "Available Points: " + str(_player_variables.player_score)
 
 func on_continue():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/main.tscn")

@@ -34,7 +34,7 @@ func _ready():
 
 func on_timer_tick():
 	if time_remaining == 0:
-		get_tree().change_scene_to_file("res://scenes/PowerUpSelect.tscn")
+		SceneTransition.change_scene_to_file("res://scenes/PowerUpSelect.tscn")
 	else:
 		time_remaining -= 1
 		time_remaining_label.text = "Time remaining: " + str(time_remaining)
