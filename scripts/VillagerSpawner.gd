@@ -1,12 +1,12 @@
 extends Node
 
-const MAX_VILLAGERS = 10
+const MAX_VILLAGERS = 100
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
 @export var villager_scene: PackedScene
 @export var guard_scene: PackedScene
 var villagers: Array[Villager] = []
 
-const BASE_GUARD_SPAWN_RATE = 25
+const BASE_GUARD_SPAWN_RATE = 10
 const GUARD_SPAWN_RATE_INCR = 5
 const ROUND_PER_SPAWN_RATE_INCR = 3
 
@@ -32,7 +32,7 @@ func _ready():
 	var timer = Timer.new()
 	timer.autostart = true
 	timer.one_shot = false
-	timer.wait_time = 3.5
+	timer.wait_time = 0.5
 	var callable = Callable(self, "spawn_villagers")
 	timer.connect("timeout", callable)
 	add_child(timer)
