@@ -11,6 +11,7 @@ stream_0/stream = ExtResource("2_2g4lk")
 stream_0/weight = 1.0
 
 [node name="Corpse" type="Sprite2D"]
+modulate = Color(0.784314, 0.784314, 0.784314, 0.784314)
 z_index = -10
 script = ExtResource("1_8brep")
 

@@ -555,7 +555,7 @@ script = ExtResource("1_ap0ro")
 mob_scene = ExtResource("2_ybvpi")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.560784, 0.541176, 0.678431, 1)
+color = Color(0.254902, 0.25098, 0.596078, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -100
