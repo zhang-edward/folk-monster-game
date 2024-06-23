@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwihblou20q0s"]
+
+[ext_resource type="Script" path="res://scripts/VillagerSpawner.gd" id="1_o68d0"]
+[ext_resource type="PackedScene" uid="uid://b5faxla4fhqsr" path="res://prefabs/Villager.tscn" id="2_22o6w"]
+
+[node name="VillagerSpawner" type="Node2D"]
+script = ExtResource("1_o68d0")
+villager_scene = ExtResource("2_22o6w")

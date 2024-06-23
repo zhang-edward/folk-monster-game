@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5faxla4fhqsr"]
+[gd_scene load_steps=11 format=3 uid="uid://b5faxla4fhqsr"]
 
 [ext_resource type="Script" path="res://scripts/Villager.gd" id="1_7tvhq"]
-[ext_resource type="PackedScene" path="res://prefabs/DamageNumber.tscn" id="2_784rf"]
+[ext_resource type="PackedScene" uid="uid://co01661atigyf" path="res://prefabs/DamageNumber.tscn" id="2_784rf"]
 [ext_resource type="SpriteFrames" uid="uid://bfr1iahf6ngj5" path="res://animations/Villager1.tres" id="2_x5ed0"]
 [ext_resource type="Script" path="res://scripts/fsm/StateMachine.gd" id="3_dewl8"]
 [ext_resource type="Script" path="res://scripts/fsm/IdleState.gd" id="4_c5nv6"]
 [ext_resource type="Script" path="res://scripts/fsm/FleeState.gd" id="5_yd4qx"]
 [ext_resource type="AudioStream" uid="uid://c1t06gav0qjiu" path="res://sfx/slash.wav" id="6_aoio5"]
+[ext_resource type="Script" path="res://scripts/Wander.gd" id="7_yjudp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lihtq"]
 radius = 6.0
@@ -24,7 +25,7 @@ damage_number = ExtResource("2_784rf")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_x5ed0")
-animation = &"die"
+animation = &"run"
 autoplay = "idle"
 offset = Vector2(2.08165e-12, -2)
 
@@ -34,13 +35,16 @@ shape = SubResource("CircleShape2D_lihtq")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_dewl8")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Wander")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_c5nv6")
 
 [node name="Flee" type="Node" parent="StateMachine"]
 script = ExtResource("5_yd4qx")
+
+[node name="Wander" type="Node" parent="StateMachine"]
+script = ExtResource("7_yjudp")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_pq078")

@@ -1,6 +1,6 @@
 extends Node
 
-var player_score := 0
+var player_score := 20
 var player_power_ups = []
 
 # Power ups
