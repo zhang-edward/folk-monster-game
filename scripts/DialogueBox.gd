@@ -14,10 +14,15 @@ var _last_char = ""
 @export var voice: AudioStreamPlayer2D
 @export var skippable: bool = false
 @onready var voice_timer: Timer = $VoiceTimer
+var text_no_bb_code: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func init(txt: String):
 	self.text = txt
+	var regex = RegEx.new()
+	regex.compile("\\[(.*?)\\]")
+	text_no_bb_code = regex.sub(txt, "", true)
+	print(text_no_bb_code)
 	visible_characters = 0
 	voice_timer.timeout.connect(voice_timer_timeout)
 	voice_timer.start()
@@ -32,9 +37,9 @@ func _process(delta):
 
 	if _t > _scroll_interval:
 		_t = 0
-		if visible_characters < text.length():
+		if visible_characters < text_no_bb_code.length():
 			visible_characters += 1
-			_last_char = text.substr(visible_characters - 1, 1)
+			_last_char = text_no_bb_code.substr(visible_characters - 1, 1)
 			if _last_char == "." or _last_char == "\n":
 				_scroll_interval = PUNCTUATION_INTERVAL
 			elif _last_char == ",":
@@ -46,7 +51,7 @@ func _process(delta):
 		if voice_timer.is_stopped():
 			voice_timer.start()
 	
-	if visible_characters == text.length():
+	if visible_characters == text_no_bb_code.length():
 		voice_timer.stop()
 		dialogue_finished.emit()
 

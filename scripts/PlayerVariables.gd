@@ -1,8 +1,8 @@
 extends Node
 
-var player_score := 30
+var player_score := 0
 var kill_count := 0
-var generation_number = 0
+var generation_number = 1
 var player_power_ups = []
 
 # Power ups

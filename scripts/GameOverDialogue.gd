@@ -1,13 +1,19 @@
 extends Control
 
+@onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var text = ""
-	text += "And so, after many dark nights and untold sorrow across generations, the town guard mustered their courage and faced the beast as it attacked the village.\n\n"
+	text += "And so, after many dark nights and untold sorrow across [X generations], the town guard mustered their courage and faced the beast as it attacked the village.\n\n"
 	text += "With unwavering resolve and sheer determination, they fought fiercely, striking down the creature in the midst of its rampage.\n\n"
 	text += "The village was finally freed from its terror, and peace returned at last.\n\n"
 	text += "Yet...\n\n"
 	text += "The shadows of those harrowing nights still linger, a grim reminder that true evil never truly dies, but merely slumbers, waiting for the darkness to rise once more."
+	
+	var num_generations = _player_variables.generation_number
+	var generation_str = str(num_generations) + " generation" if num_generations == 1 else str(num_generations) + " generations"
+	text = text.replace("[X generations]", "[color=red]" + generation_str + "[/color]")
 	$DialogueBox.init(text)
 	$DialogueBox.dialogue_finished.connect(_on_DialogueBox_dialogue_finished)
 	$RestartButton.pressed.connect(_on_RestartButton_pressed)

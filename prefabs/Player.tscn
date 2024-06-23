@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://gpk1ye66q77"]
+[gd_scene load_steps=53 format=3 uid="uid://gpk1ye66q77"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_l24bt"]
 [ext_resource type="Texture2D" uid="uid://dimvafecqheci" path="res://sprites/player/beast.png" id="2_ax2r0"]
+[ext_resource type="PackedScene" uid="uid://co01661atigyf" path="res://prefabs/DamageNumber.tscn" id="2_j8poa"]
 [ext_resource type="Texture2D" uid="uid://d10vusyi1u0vm" path="res://sprites/player/slash3.png" id="3_gcvvk"]
 [ext_resource type="Texture2D" uid="uid://ccsvekvhgkhs8" path="res://sprites/player/slash4.png" id="4_5sug4"]
 [ext_resource type="Texture2D" uid="uid://dpl3v6f5tdy3d" path="res://sprites/player/slash.png" id="4_c8cps"]
@@ -308,6 +309,7 @@ stream_1/weight = 1.0
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_l24bt")
+damage_number = ExtResource("2_j8poa")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
