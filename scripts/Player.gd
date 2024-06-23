@@ -7,6 +7,7 @@ const DAMAGE_UPGRADE_INCREMENT = 5
 const SPEED_UPGRADE_INCREMENT = 25
 
 var hitbox_scene: PackedScene = preload ("res://prefabs/Hitbox.tscn")
+var health = 100
 
 @onready var sprite = $Sprite
 @onready var effect = $Effect
@@ -28,3 +29,13 @@ func attack(attack_hand: String, attack_number: String):
 	add_child(hitbox)
 	var hitbox_offset = Vector2( - 50, 0) if sprite.flip_h else Vector2(50, 0)
 	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, randi() % 50 + 30)
+
+func damage(amt: int):
+	health -= amt
+
+	Engine.time_scale = 0.5
+	sprite.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.25, true, false, true).timeout
+
+	Engine.time_scale = 1.0
+	sprite.modulate = Color(1, 1, 1)

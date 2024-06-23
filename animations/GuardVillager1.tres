@@ -1,0 +1,68 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://djo4dx3hhoh1l"]
+
+[ext_resource type="Texture2D" uid="uid://b4yqwk1s1gx12" path="res://sprites/villager/guard2.png" id="1_juerw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shstk"]
+atlas = ExtResource("1_juerw")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdifc"]
+atlas = ExtResource("1_juerw")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrc6k"]
+atlas = ExtResource("1_juerw")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qatry"]
+atlas = ExtResource("1_juerw")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbh20"]
+atlas = ExtResource("1_juerw")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq7xk"]
+atlas = ExtResource("1_juerw")
+region = Rect2(48, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shstk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdifc")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrc6k")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qatry")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbh20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq7xk")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]

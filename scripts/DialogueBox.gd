@@ -36,7 +36,7 @@ const POWERUP_OPTIONS = [
 	"Folk tales describe how the beast could..."
 ]
 
-const SCROLL_INTERVAL = 0.02
+const SCROLL_INTERVAL = 0.01
 const PUNCTUATION_INTERVAL = 0.5
 const COMMA_INTERVAL = 0.1
 

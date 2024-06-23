@@ -1,13 +1,13 @@
 class_name Villager
 extends CharacterBody2D
 
-const FLEE_DIST_THRESHOLD = 200
-
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
 @onready var _state_machine: StateMachine = get_node("StateMachine")
 @onready var _sprite: AnimatedSprite2D = $Sprite
 @onready var player: Player = get_node("/root/Main/Player") as Player
+@onready var effect = $Effect
 @export var damage_number: PackedScene
+@export var is_guard: bool = false
 
 var _corpse_scene = preload ("res://prefabs/Corpse.tscn")
 var _effect_scene = preload ("res://prefabs/Effect.tscn")
@@ -17,8 +17,12 @@ var _blood_splatter_particles: PackedScene = preload ("res://prefabs/BloodSplatt
 var _health = 100
 
 func _ready():
-	var villager_num = randi() % 3 + 1
-	_sprite.frames = load("res://animations/Villager" + str(villager_num) + ".tres")
+	if is_guard:
+		var guard_num = randi() % 2 + 1
+		_sprite.frames = load("res://animations/GuardVillager" + str(guard_num) + ".tres")
+	else:
+		var villager_num = randi() % 4 + 1
+		_sprite.frames = load("res://animations/Villager" + str(villager_num) + ".tres")
 
 func damage(amt: int):
 	_health -= amt

@@ -32,7 +32,8 @@ func _handle_body_entered(body: Node2D):
 		_collision_exceptions[body] = true
 
 	if _collide_with == CollideableTypes.Player and body is Player:
-		print("hit ", body)
+		var player = body as Player
+		player.damage(_damage)
 	elif _collide_with == CollideableTypes.Villager and body is Villager:
 		var villager = body as Villager
 		villager.damage(_damage)
