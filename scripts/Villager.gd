@@ -15,6 +15,7 @@ var _blood_splatter_particles: PackedScene = preload ("res://prefabs/BloodSplatt
 var effect = null
 
 var _health = 100
+const FLEE_DIST_THRESHOLD = 150
 
 func _ready():
 	if is_guard:

@@ -17,9 +17,9 @@ const POWER_UPS = [
 		"cost": 10
 	},
 	{
-		"name": "Attack Speed Up",
-		"type": PlayerVariables.PowerUpTypes.AttackSpeed,
-		"description": "Increase attack speed by 10%",
+		"name": "Attack Up",
+		"type": PlayerVariables.PowerUpTypes.AttackUp,
+		"description": "Increase damage of basic attack by 5",
 		"cost": 10
 	},
 #	{
@@ -45,7 +45,7 @@ const POWER_UPS = [
 		"type": PlayerVariables.PowerUpTypes.SoulHarvest,
 		"description": "Harvest 2 souls per kill",
 		"cost": 50
-	}
+	},
 #	{
 #		"name": "Acid Spit",
 #		"type": PlayerVariables.PowerUpTypes.AcidSpit,
@@ -53,13 +53,12 @@ const POWER_UPS = [
 #		"upgradeDescription": "Launch 1 more acid",
 #		"cost": 3
 #	},
-#	{
-#		"name": "Lunge",
-#		"type": PlayerVariables.PowerUpTypes.Lunge,
-#		"description": "Charge forward rapidly",
-#		"upgradeDescription": "Lunge further",
-#		"cost": 3
-#	},
+	{
+		"name": "Lunge Damage",
+		"type": PlayerVariables.PowerUpTypes.Lunge,
+		"description": "Increase lunge damage",
+		"cost": 10
+	},
 #	{
 #		"name": "Fire Breath",
 #		"type": PlayerVariables.PowerUpTypes.FireBreath,

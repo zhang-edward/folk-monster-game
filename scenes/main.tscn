@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://csiqmpcnllfcv"]
+[gd_scene load_steps=24 format=3 uid="uid://csiqmpcnllfcv"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_ak77v"]
 [ext_resource type="Script" path="res://scripts/DayNight.gd" id="2_sfewf"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b2sfctt82rd4r" path="res://sprites/village/House_Hay_Stone_2.png" id="13_jm2w6"]
 [ext_resource type="Texture2D" uid="uid://bswbkx7dmi0o6" path="res://sprites/village/House_Hay_Stone_3.png" id="14_u20ql"]
 [ext_resource type="AudioStream" uid="uid://dceambxnfrwff" path="res://music/Ossuary 4 - Animate.mp3" id="15_2hguf"]
+[ext_resource type="PackedScene" uid="uid://dwihblou20q0s" path="res://prefabs/VillagerSpawner.tscn" id="17_a0n03"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qqu6x"]
 texture = ExtResource("3_fk8lj")
@@ -756,3 +757,15 @@ polygon = PackedVector2Array(-53.6667, -57.6667, -53, 14.3333, -85.6667, 43, -85
 stream = ExtResource("15_2hguf")
 volume_db = 2.08
 autoplay = true
+
+[node name="VillagerSpawner" parent="." instance=ExtResource("17_a0n03")]
+position = Vector2(-640, 847)
+
+[node name="VillagerSpawner2" parent="." instance=ExtResource("17_a0n03")]
+position = Vector2(328, 382)
+
+[node name="VillagerSpawner3" parent="." instance=ExtResource("17_a0n03")]
+position = Vector2(-808, -284)
+
+[node name="VillagerSpawner4" parent="." instance=ExtResource("17_a0n03")]
+position = Vector2(724, -378)
