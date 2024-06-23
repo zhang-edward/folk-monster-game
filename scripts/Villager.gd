@@ -40,7 +40,7 @@ func _ready():
 func calculate_round_health():
 	# Make villager health increase every few rounds
 	var base_health = GUARD_BASE_HEALTH if is_guard else VILLAGER_BASE_HEALTH
-	return base_health + (int(_player_variables.generation_number) / int(ROUND_PER_HEALTH_INCR)) * HEALTH_INCR
+	return base_health + (int(_player_variables.generation_number) / int(ROUND_PER_HEALTH_INCR)) * HEALTH_INCR	
 
 func damage(amt: int):
 	_health -= amt

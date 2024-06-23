@@ -6,6 +6,7 @@ const BASE_DAMAGE = 20
 const LUNGE_BASE_DAMAGE = 10
 const DAMAGE_UPGRADE_INCREMENT = 5
 const SPEED_UPGRADE_INCREMENT = 25
+const DEF_UPGRADE_INCREMENT = 5
 const BLOOD_COLOR = 0x7150f8FF
 
 var hitbox_scene: PackedScene = preload ("res://prefabs/Hitbox.tscn")
@@ -14,6 +15,7 @@ var health = 100
 @onready var sprite = $Sprite
 @onready var effect = $Effect
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
+@export var damage_number: PackedScene
 
 var _effect_scene = preload ("res://prefabs/Effect.tscn")
 var _blood_splatter: SpriteFrames = preload ("res://animations/PlayerHitEffect.tres")
@@ -41,7 +43,13 @@ func attack(attack_hand: String, attack_number: String, is_lunge: bool):
 	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, damage)
 
 func damage(amt: int):
-	health -= amt
+	var defense = calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.DefenseUp, 0, DEF_UPGRADE_INCREMENT)
+	var damage_minus_defense = clamp(amt - defense, 1, INF)
+	var new_damage_number = damage_number.instantiate() as DamageNumber
+	new_damage_number.global_position = sprite.global_position
+	new_damage_number.text = str(damage_minus_defense)
+	add_sibling(new_damage_number)
+	health -= damage_minus_defense
 	if !$HurtSound.playing:
 		$HurtSound.play()
 

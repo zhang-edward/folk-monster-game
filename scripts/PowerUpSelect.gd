@@ -27,12 +27,12 @@ const POWER_UPS = [
 		"description": "Increase attack speed by 10%",
 		"cost": 10
 	},
-#	{
-#		"name": "Defense Up",
-#		"type": PlayerVariables.PowerUpTypes.DefenseUp,
-#		"description": "Decrease incoming damage by 5",
-#		"cost": 2
-#	},
+	{
+		"name": "...shatter weapons with its thick hide!",
+		"type": PlayerVariables.PowerUpTypes.DefenseUp,
+		"description": "Decrease incoming damage by 5",
+		"cost": 10
+	},
 	{
 		"name": "...run faster than the wind!",
 		"type": PlayerVariables.PowerUpTypes.SpeedUp,
