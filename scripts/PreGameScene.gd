@@ -12,4 +12,4 @@ func _on_DialogueBox_dialogue_finished():
 	if switching:
 		return
 	switching = true
-	SceneTransition.change_scene_to_file("res://scenes/Main.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/main.tscn")

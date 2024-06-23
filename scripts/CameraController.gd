@@ -8,7 +8,7 @@ extends Camera2D
 
 var noise_y = 0 # Value used to move through the noise
 
-var trauma := 0.5 # Current shake strength
+var trauma := 0.0 # Current shake strength
 var trauma_pwr := 2 # Trauma exponent. Use [2,3]
 
 func _ready():
