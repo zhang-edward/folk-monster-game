@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://csiqmpcnllfcv"]
+[gd_scene load_steps=23 format=3 uid="uid://csiqmpcnllfcv"]
 
 [ext_resource type="PackedScene" uid="uid://gpk1ye66q77" path="res://prefabs/Player.tscn" id="1_01oqp"]
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_ap0ro"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://465dx88rif2w" path="res://sprites/props/Bulletin_Board.png" id="8_bgw3e"]
 [ext_resource type="Texture2D" uid="uid://bswbkx7dmi0o6" path="res://sprites/village/House_Hay_Stone_3.png" id="8_ctqjr"]
 [ext_resource type="Texture2D" uid="uid://behvm3ntp4r64" path="res://sprites/props/Bench_1.png" id="10_f6g87"]
+[ext_resource type="AudioStream" uid="uid://dceambxnfrwff" path="res://music/Ossuary 4 - Animate.mp3" id="15_11s2g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qqu6x"]
 texture = ExtResource("3_btyqm")
@@ -607,151 +608,150 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
+
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 120.0
 one_shot = true
 
-[node name="Env" type="Node2D" parent="."]
+[node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Lamp1" type="Sprite2D" parent="Env"]
+[node name="Lamp1" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(-237, -350)
 scale = Vector2(3, 3)
 texture = ExtResource("7_ixi0k")
 offset = Vector2(2.08165e-12, -16)
 
-[node name="PointLight2D" type="PointLight2D" parent="Env/Lamp1"]
+[node name="PointLight2D" type="PointLight2D" parent="Environment/Lamp1"]
 position = Vector2(4.66666, -8.66667)
 energy = 0.5
 texture = ExtResource("3_mae0g")
 texture_scale = 0.5
 
-[node name="Barrel2" type="Sprite2D" parent="Env"]
+[node name="Barrel2" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(-460, 575)
 scale = Vector2(3, 3)
 texture = ExtResource("7_nicub")
 
-[node name="Bench1" type="Sprite2D" parent="Env"]
+[node name="Bench1" type="Sprite2D" parent="Environment"]
 position = Vector2(-372, -228)
 scale = Vector2(3, 3)
 texture = ExtResource("10_f6g87")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Env/Bench1"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Bench1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bench1/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Bench1/StaticBody2D"]
 position = Vector2(1.52588e-05, -0.333336)
 shape = SubResource("RectangleShape2D_elxd6")
 
-[node name="Bench2" type="Sprite2D" parent="Env"]
+[node name="Bench2" type="Sprite2D" parent="Environment"]
 position = Vector2(134, -108)
 scale = Vector2(3, 3)
 texture = ExtResource("10_f6g87")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Env/Bench2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Bench2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bench2/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Bench2/StaticBody2D"]
 position = Vector2(1.52588e-05, -0.333336)
 shape = SubResource("RectangleShape2D_elxd6")
 
-[node name="Bench3" type="Sprite2D" parent="Env"]
+[node name="Bench3" type="Sprite2D" parent="Environment"]
 position = Vector2(-137, 610)
 scale = Vector2(3, 3)
 texture = ExtResource("10_f6g87")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Env/Bench3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Bench3"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bench3/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Bench3/StaticBody2D"]
 position = Vector2(1.52588e-05, -0.333336)
 shape = SubResource("RectangleShape2D_elxd6")
 
-[node name="BulletinBoard" type="Sprite2D" parent="Env"]
+[node name="BulletinBoard" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(-75, 206)
 scale = Vector2(3, 3)
 texture = ExtResource("8_bgw3e")
 
-[node name="HouseHayStone1" type="Sprite2D" parent="Env"]
+[node name="HouseHayStone1" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(398, -233)
 scale = Vector2(3, 3)
 texture = ExtResource("6_fc8ut")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Env/HouseHayStone1"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/HouseHayStone1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/HouseHayStone1/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/HouseHayStone1/StaticBody2D"]
 position = Vector2(2.08165e-12, 5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tipsn")
 
-[node name="HouseHayStone4" type="Sprite2D" parent="Env"]
+[node name="HouseHayStone4" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(-1129, -114)
 scale = Vector2(3, 3)
 texture = ExtResource("6_fc8ut")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Env/HouseHayStone4"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/HouseHayStone4"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/HouseHayStone4/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/HouseHayStone4/StaticBody2D"]
 position = Vector2(2.08165e-12, 5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tipsn")
 
-[node name="HouseHayStone2" type="Sprite2D" parent="Env"]
+[node name="HouseHayStone2" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(-579, -585)
 scale = Vector2(3, 3)
 texture = ExtResource("7_v8c5a")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Env/HouseHayStone2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/HouseHayStone2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/HouseHayStone2/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/HouseHayStone2/StaticBody2D"]
 position = Vector2(-2.3, -16.1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2ejwo")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Env/HouseHayStone2/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/HouseHayStone2/StaticBody2D"]
 position = Vector2(33.3, 38)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nfhju")
 
-[node name="HouseHayStone5" type="Sprite2D" parent="Env"]
+[node name="HouseHayStone5" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(663, 646)
 scale = Vector2(3, 3)
 texture = ExtResource("7_v8c5a")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Env/HouseHayStone5"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/HouseHayStone5"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/HouseHayStone5/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/HouseHayStone5/StaticBody2D"]
 position = Vector2(-2.3, -16.1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2ejwo")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Env/HouseHayStone5/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/HouseHayStone5/StaticBody2D"]
 position = Vector2(33.3, 38)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nfhju")
 
-[node name="HouseHayStone3" type="Sprite2D" parent="Env"]
+[node name="HouseHayStone3" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(-675, 388)
 scale = Vector2(3, 3)
 texture = ExtResource("8_ctqjr")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Env/HouseHayStone3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/HouseHayStone3"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/HouseHayStone3/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/HouseHayStone3/StaticBody2D"]
 polygon = PackedVector2Array(-53.6667, -57.6667, -53, 14.3333, -85.6667, 43, -85.3333, 61.6667, 78.6667, 62.6667, 78.6667, -40.3333, 46, -60.6667)
 
-[node name="HouseHayStone6" type="Sprite2D" parent="Env"]
+[node name="HouseHayStone6" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(792, -737)
 scale = Vector2(3, 3)
 texture = ExtResource("8_ctqjr")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Env/HouseHayStone6"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/HouseHayStone6"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/HouseHayStone6/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/HouseHayStone6/StaticBody2D"]
 polygon = PackedVector2Array(-53.6667, -57.6667, -53, 14.3333, -85.6667, 43, -85.3333, 61.6667, 78.6667, 62.6667, 78.6667, -40.3333, 46, -60.6667)
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_11s2g")
+autoplay = true

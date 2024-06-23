@@ -42,6 +42,10 @@ const COMMA_INTERVAL = 0.1
 
 var _scroll_interval := SCROLL_INTERVAL
 var _t = 0
+var _last_char = ""
+
+@export var voice: AudioStreamPlayer2D
+@onready var voice_timer: Timer = $VoiceTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,6 +55,8 @@ func _ready():
 	text += KILL_COUNT_OPTIONS[randi() % KILL_COUNT_OPTIONS.size()].replace("X", str(score)) + "\n\n"
 	text += POWERUP_OPTIONS[randi() % POWERUP_OPTIONS.size()] + "\n\n"
 	visible_characters = 0
+	voice_timer.timeout.connect(voice_timer_timeout)
+	voice_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -58,12 +64,21 @@ func _process(delta):
 		_t = 0
 		if visible_characters < text.length():
 			visible_characters += 1
-			var last_char = text.substr(visible_characters - 1, 1)
-			if last_char == "." or last_char == "\n":
+			_last_char = text.substr(visible_characters - 1, 1)
+			if _last_char == "." or _last_char == "\n":
 				_scroll_interval = PUNCTUATION_INTERVAL
-			elif last_char == ",":
+			elif _last_char == ",":
 				_scroll_interval = COMMA_INTERVAL
 			else:
 				_scroll_interval = SCROLL_INTERVAL
 	else:
 		_t += delta
+		if voice_timer.is_stopped():
+			voice_timer.start()
+	
+	if visible_characters == text.length():
+		voice_timer.stop()
+
+func voice_timer_timeout():
+	if _last_char != "\n" and _last_char != "." and _last_char != ",":
+		voice.play()

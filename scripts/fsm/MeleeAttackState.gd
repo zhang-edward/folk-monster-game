@@ -49,11 +49,12 @@ func on_attack_frame():
 	player.effect.flip_h = sprite.flip_h
 	player.effect.show()
 	player.effect.play("slash_" + _attack_hand + _attack_number)
+	player.get_node("SlashSound").play()
 
 	var hitbox = hitbox_scene.instantiate()
 	player.add_child(hitbox)
 	var hitbox_offset = Vector2( - 50, 0) if sprite.flip_h else Vector2(50, 0)
-	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager)
+	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, randi() % 50 + 30)
 
 func on_attack_complete():
 	if Input.is_action_pressed("attack"):
