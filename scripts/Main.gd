@@ -1,7 +1,8 @@
 extends Node2D
+class_name Main
 
 @export var mob_scene: PackedScene
-@export var num_villagers = 10
+@export var num_villagers = 50
 @onready var time_remaining_label = $CanvasLayer/GUI/TimeRemaining as Label
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
 @onready var player: Player = %Player as Player
@@ -15,8 +16,7 @@ func _ready():
 	var villagers = []
 	for i in range(num_villagers):
 		var villager = mob_scene.instantiate()
-		villager.global_position = $Player.global_position
-		villager.global_position.x += (i + 1) * 10
+		villager.position = Vector2(randi() % 1000 - 500, randi() % 800 - 400)
 		villagers.append(villager)
 		add_child(villager)
 	
@@ -30,7 +30,6 @@ func _ready():
 	var callable = Callable(self, "on_timer_tick")
 	timer.timeout.connect(callable)
 	add_child(timer)
-
 
 func on_timer_tick():
 	if time_remaining == 0:

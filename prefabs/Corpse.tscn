@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b27830anic7hy"]
+[gd_scene load_steps=10 format=3 uid="uid://b27830anic7hy"]
 
 [ext_resource type="Script" path="res://scripts/Corpse.gd" id="1_8brep"]
 [ext_resource type="AudioStream" uid="uid://c75e2xbsbsye8" path="res://sfx/323526__kreastricon62__bloody-blade-2.wav" id="2_2g4lk"]
+[ext_resource type="AudioStream" path="res://sfx/hurt_m2.wav" id="3_ei85i"]
+[ext_resource type="AudioStream" path="res://sfx/hurt_m1.wav" id="4_kqdur"]
+[ext_resource type="AudioStream" path="res://sfx/scream_f1.wav" id="5_7n1oh"]
+[ext_resource type="AudioStream" path="res://sfx/scream_m1.wav" id="6_msejx"]
+[ext_resource type="AudioStream" path="res://sfx/scream_m2.wav" id="7_bm3rt"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qgvb6"]
 streams_count = 1
@@ -10,9 +15,27 @@ random_volume_offset_db = 3.0
 stream_0/stream = ExtResource("2_2g4lk")
 stream_0/weight = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3bdet"]
+streams_count = 5
+random_pitch = 1.3
+stream_0/stream = ExtResource("3_ei85i")
+stream_0/weight = 3.0
+stream_1/stream = ExtResource("4_kqdur")
+stream_1/weight = 3.0
+stream_2/stream = ExtResource("5_7n1oh")
+stream_2/weight = 3.0
+stream_3/stream = ExtResource("6_msejx")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("7_bm3rt")
+stream_4/weight = 1.0
+
 [node name="Corpse" type="Sprite2D"]
+modulate = Color(0.784314, 0.784314, 0.784314, 0.784314)
 z_index = -10
 script = ExtResource("1_8brep")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_qgvb6")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_3bdet")

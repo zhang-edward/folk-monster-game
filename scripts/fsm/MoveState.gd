@@ -20,6 +20,8 @@ func update(_delta: float) -> void:
 func handle_input(input: InputEvent) -> void:
 	if Input.is_action_just_pressed("attack"):
 		state_machine.transition_to("MeleeAttack", {})
+	if Input.is_action_just_pressed("lunge"):
+		state_machine.transition_to("Lunge", {})
 
 func enter(_msg:={}) -> void:
 	pass

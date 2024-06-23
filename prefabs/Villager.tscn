@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b5faxla4fhqsr"]
 
 [ext_resource type="Script" path="res://scripts/Villager.gd" id="1_7tvhq"]
-[ext_resource type="PackedScene" uid="uid://co01661atigyf" path="res://prefabs/DamageNumber.tscn" id="2_784rf"]
+[ext_resource type="PackedScene" path="res://prefabs/DamageNumber.tscn" id="2_784rf"]
 [ext_resource type="SpriteFrames" uid="uid://bfr1iahf6ngj5" path="res://animations/Villager1.tres" id="2_x5ed0"]
 [ext_resource type="Script" path="res://scripts/fsm/StateMachine.gd" id="3_dewl8"]
 [ext_resource type="Script" path="res://scripts/fsm/IdleState.gd" id="4_c5nv6"]

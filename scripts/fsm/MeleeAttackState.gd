@@ -45,18 +45,7 @@ func on_attack_frame():
 		return
 
 	var player = entity as Player
-	var effect_offset = Vector2( - 50, 0) if sprite.flip_h else Vector2(50, 0)
-	player.effect.position = effect_offset
-	player.effect.flip_h = sprite.flip_h
-	player.effect.show()
-	player.effect.play("slash_" + _attack_hand + _attack_number)
-	player.get_node("SlashSound").play()
-
-	var hitbox = hitbox_scene.instantiate()
-	player.add_child(hitbox)
-	var hitbox_offset = Vector2( - 50, 0) if sprite.flip_h else Vector2(50, 0)
-	var damage = player.calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.AttackUp, Player.BASE_DAMAGE, Player.DAMAGE_UPGRADE_INCREMENT)
-	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, damage)
+	player.attack(_attack_hand, _attack_number)
 
 func on_attack_complete():
 	if Input.is_action_pressed("attack"):
