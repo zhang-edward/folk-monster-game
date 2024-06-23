@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://csiqmpcnllfcv"]
+[gd_scene load_steps=33 format=3 uid="uid://csiqmpcnllfcv"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_ak77v"]
 [ext_resource type="Script" path="res://scripts/DayNight.gd" id="2_sfewf"]
@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://bswbkx7dmi0o6" path="res://sprites/village/House_Hay_Stone_3.png" id="14_u20ql"]
 [ext_resource type="AudioStream" uid="uid://dceambxnfrwff" path="res://music/Ossuary 4 - Animate.mp3" id="15_2hguf"]
 [ext_resource type="PackedScene" path="res://prefabs/VillagerSpawner.tscn" id="17_a0n03"]
+[ext_resource type="Texture2D" uid="uid://dy5n6mwmygldu" path="res://sprites/props/Bush_Emerald_1.png" id="19_ehqdk"]
+[ext_resource type="Texture2D" uid="uid://ca8fh68jiyhdt" path="res://sprites/props/Bush_Emerald_2.png" id="20_snvpt"]
+[ext_resource type="Texture2D" uid="uid://dqnbvav3miv6u" path="res://sprites/props/Bush_Emerald_6.png" id="21_l424o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qqu6x"]
 texture = ExtResource("3_fk8lj")
@@ -762,6 +765,45 @@ energy = 0.5
 texture = ExtResource("8_01ebi")
 texture_scale = 0.5
 
+[node name="Lamp3" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
+position = Vector2(801, -127)
+scale = Vector2(3, 3)
+texture = ExtResource("7_v3l3g")
+offset = Vector2(2.08165e-12, -16)
+
+[node name="PointLight2D" type="PointLight2D" parent="Environment/Lamp3"]
+position = Vector2(4.66666, -8.66667)
+energy = 0.5
+texture = ExtResource("8_01ebi")
+texture_scale = 0.5
+
+[node name="Lamp4" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
+position = Vector2(-827, 1091)
+scale = Vector2(3, 3)
+texture = ExtResource("7_v3l3g")
+offset = Vector2(2.08165e-12, -16)
+
+[node name="PointLight2D" type="PointLight2D" parent="Environment/Lamp4"]
+position = Vector2(4.66666, -8.66667)
+energy = 0.5
+texture = ExtResource("8_01ebi")
+texture_scale = 0.5
+
+[node name="Lamp5" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
+position = Vector2(347, 756)
+scale = Vector2(3, 3)
+texture = ExtResource("7_v3l3g")
+offset = Vector2(2.08165e-12, -16)
+
+[node name="PointLight2D" type="PointLight2D" parent="Environment/Lamp5"]
+position = Vector2(4.66666, -8.66667)
+energy = 0.5
+texture = ExtResource("8_01ebi")
+texture_scale = 0.5
+
 [node name="Barrel2" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 position = Vector2(-460, 575)
@@ -986,3 +1028,53 @@ position = Vector2(-445, 1081)
 
 [node name="VillagerSpawner11" parent="." instance=ExtResource("17_a0n03")]
 position = Vector2(1038, 351)
+
+[node name="BushEmerald1" type="Sprite2D" parent="."]
+position = Vector2(194, 51)
+scale = Vector2(3, 3)
+texture = ExtResource("19_ehqdk")
+
+[node name="BushEmerald4" type="Sprite2D" parent="."]
+position = Vector2(-1025, 1238)
+scale = Vector2(3, 3)
+texture = ExtResource("19_ehqdk")
+
+[node name="BushEmerald2" type="Sprite2D" parent="."]
+position = Vector2(-794, -389)
+scale = Vector2(3, 3)
+texture = ExtResource("19_ehqdk")
+
+[node name="BushEmerald3" type="Sprite2D" parent="."]
+position = Vector2(41.9999, 917)
+scale = Vector2(3, 3)
+texture = ExtResource("19_ehqdk")
+
+[node name="BushEmerald5" type="Sprite2D" parent="."]
+position = Vector2(831, 52)
+scale = Vector2(3, 3)
+texture = ExtResource("20_snvpt")
+
+[node name="BushEmerald6" type="Sprite2D" parent="."]
+position = Vector2(174, -579)
+scale = Vector2(3, 3)
+texture = ExtResource("20_snvpt")
+
+[node name="BushEmerald7" type="Sprite2D" parent="."]
+position = Vector2(-1081, 160)
+scale = Vector2(3, 3)
+texture = ExtResource("20_snvpt")
+
+[node name="BushEmerald8" type="Sprite2D" parent="."]
+position = Vector2(-994, 205)
+scale = Vector2(3, 3)
+texture = ExtResource("21_l424o")
+
+[node name="BushEmerald9" type="Sprite2D" parent="."]
+position = Vector2(-689, -361)
+scale = Vector2(3, 3)
+texture = ExtResource("21_l424o")
+
+[node name="BushEmerald10" type="Sprite2D" parent="."]
+position = Vector2(724, 77)
+scale = Vector2(3, 3)
+texture = ExtResource("21_l424o")
