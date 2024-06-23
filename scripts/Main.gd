@@ -15,19 +15,12 @@ var time_remaining
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Spawns villagers
-	var villagers = []
-	for i in range(num_villagers):
-		var villager = mob_scene.instantiate()
-		villager.position = Vector2(randi() % 1000 - 500, randi() % 800 - 400)
-		villagers.append(villager)
-		add_child(villager)
-
+	# Spawns guards
 	for i in range(num_guards):
 		var villager = guard_scene.instantiate()
 		villager.position = Vector2(randi() % 1000 - 500, randi() % 800 - 400)
 		add_child(villager)
-	
+
 	# Set a time limit for the night
 	time_remaining = player.calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.TimeWarp, TIME_LIMIT_SECONDS, 5)
 	time_remaining_label.text = "Time remaining: " + str(time_remaining)

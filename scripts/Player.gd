@@ -33,7 +33,8 @@ func attack(attack_hand: String, attack_number: String):
 	var hitbox = hitbox_scene.instantiate()
 	add_child(hitbox)
 	var hitbox_offset = Vector2( - 50, 0) if sprite.flip_h else Vector2(50, 0)
-	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, randi() % 50 + 30)
+	var damage = calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.AttackUp, BASE_DAMAGE, DAMAGE_UPGRADE_INCREMENT)
+	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, damage)
 
 func damage(amt: int):
 	health -= amt
