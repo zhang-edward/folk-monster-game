@@ -192,7 +192,6 @@ script = ExtResource("7_l0nsv")
 player = NodePath("../../../../Player")
 
 [node name="DayOverText" type="RichTextLabel" parent="CanvasLayer/GUI"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8

@@ -28,7 +28,7 @@ size = Vector2(74.6, 32.8)
 
 [sub_resource type="Animation" id="Animation_mgiqb"]
 resource_name = "Start"
-length = 2.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,7 +48,7 @@ tracks/1/path = NodePath("Camera2D:zoom")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.8),
+"times": PackedFloat32Array(1.2, 3),
 "transitions": PackedFloat32Array(0.466516, 0.176777),
 "update": 0,
 "values": [Vector2(0.7, 0.7), Vector2(1, 1)]
@@ -60,7 +60,7 @@ tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.8),
+"times": PackedFloat32Array(0, 3.6),
 "transitions": PackedFloat32Array(1, 2.82843),
 "update": 0,
 "values": [-6.0, -80.0]
