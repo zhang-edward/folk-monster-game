@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmmot5etbhluq"]
+[gd_scene load_steps=12 format=3 uid="uid://bmmot5etbhluq"]
 
 [ext_resource type="Script" path="res://scripts/PowerUpSelect.gd" id="1_4xnrr"]
 [ext_resource type="Script" path="res://scripts/PowerUpBox.gd" id="2_l73ih"]
@@ -9,6 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://c5id0egdocnqy" path="res://sprites/blood_splatter1.png" id="4_1hdir"]
 [ext_resource type="AudioStream" uid="uid://drqthui4xkd4h" path="res://sfx/old_man_talking.wav" id="7_eo563"]
 [ext_resource type="AudioStream" uid="uid://dsdtbcva183pg" path="res://music/PerituneMaterial_Creep_loop.ogg" id="7_oad7q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu70h"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.588235, 0.588235, 0.588235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fdx8"]
 
 [node name="PowerUpSelect" type="Node2D"]
 script = ExtResource("1_4xnrr")
@@ -75,7 +85,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
-color = Color(0, 0, 0, 0.196078)
+color = Color(1, 1, 1, 0)
 script = ExtResource("2_l73ih")
 
 [node name="Name" type="Label" parent="CanvasLayer/Control/HBoxContainer/PowerUp"]
@@ -100,14 +110,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -27.0
-offset_top = -52.0
-offset_right = 27.0
-offset_bottom = -21.0
+offset_left = -70.5
+offset_top = -43.0
+offset_right = 70.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_3xjaw")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_tu70h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5fdx8")
 text = "Get (2 SP)"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer/PowerUp"]
@@ -138,7 +149,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
-color = Color(0, 0, 0, 0.196078)
+color = Color(1, 1, 1, 0)
 script = ExtResource("2_l73ih")
 
 [node name="Name" type="Label" parent="CanvasLayer/Control/HBoxContainer/PowerUp2"]
@@ -163,14 +174,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -27.0
-offset_top = -52.0
-offset_right = 27.0
-offset_bottom = -21.0
+offset_left = -70.5
+offset_top = -43.0
+offset_right = 70.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_3xjaw")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_tu70h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5fdx8")
 text = "Get (2 SP)"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer/PowerUp2"]
@@ -201,7 +213,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
-color = Color(0, 0, 0, 0.196078)
+color = Color(1, 1, 1, 0)
 script = ExtResource("2_l73ih")
 
 [node name="Name" type="Label" parent="CanvasLayer/Control/HBoxContainer/PowerUp3"]
@@ -226,14 +238,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -27.0
-offset_top = -52.0
-offset_right = 27.0
-offset_bottom = -21.0
+offset_left = -70.5
+offset_top = -43.0
+offset_right = 70.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_3xjaw")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_tu70h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5fdx8")
 text = "Get (2 SP)"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer/PowerUp3"]
@@ -268,11 +281,13 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -647.0
-offset_top = -207.0
+offset_top = -163.0
 offset_right = -39.0
-offset_bottom = -158.0
+offset_bottom = -114.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_3xjaw")
+theme_override_font_sizes/font_size = 25
 text = "Continue"
 
 [node name="StorytellingDialogue" type="Control" parent="CanvasLayer/Control"]
