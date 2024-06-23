@@ -53,6 +53,7 @@ func damage(amt: int):
 	$HitSound.play()
 
 	# Graphics
+	player.get_node("%Camera").add_trauma(0.25, 0.25)
 	var effect = _effect_scene.instantiate() as AnimatedSprite2D
 	effect.sprite_frames = _blood_splatter
 	effect.modulate = Color.RED

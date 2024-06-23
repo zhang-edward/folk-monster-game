@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://csiqmpcnllfcv"]
+[gd_scene load_steps=34 format=3 uid="uid://csiqmpcnllfcv"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_ak77v"]
 [ext_resource type="Script" path="res://scripts/DayNight.gd" id="2_sfewf"]
 [ext_resource type="Texture2D" uid="uid://b2mmxcs6xr401" path="res://sprites/tilemap/Tileset_Ground.png" id="3_fk8lj"]
 [ext_resource type="Texture2D" uid="uid://fey3h1q7hv5a" path="res://sprites/tilemap/Tileset_Road.png" id="4_ude77"]
 [ext_resource type="PackedScene" uid="uid://gpk1ye66q77" path="res://prefabs/Player.tscn" id="5_7r1f8"]
+[ext_resource type="Script" path="res://scripts/CameraController.gd" id="6_2nbcr"]
 [ext_resource type="Script" path="res://scripts/DebugLabel.gd" id="6_m8pk2"]
 [ext_resource type="Script" path="res://scripts/PlayerHealthBar.gd" id="7_l0nsv"]
 [ext_resource type="Texture2D" uid="uid://cw363g4326dph" path="res://sprites/props/Lamp_1.png" id="7_v3l3g"]
@@ -633,12 +634,14 @@ layer_1/tile_data = PackedInt32Array(196584, 65538, 2, 131048, 262146, 2, 65512,
 unique_name_in_owner = true
 position = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
 position = Vector2(0, 24)
 limit_left = -1520
 limit_top = -1168
 limit_right = 1424
 limit_bottom = 1424
+script = ExtResource("6_2nbcr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

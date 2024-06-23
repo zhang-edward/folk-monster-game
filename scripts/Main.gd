@@ -4,7 +4,7 @@ class_name Main
 @onready var time_remaining_label = $CanvasLayer/GUI/TimeRemaining as Label
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
 @onready var player: Player = %Player as Player
-@onready var camera: Camera2D = get_node("Player/Camera2D") as Camera2D
+@onready var camera: Camera2D = get_node("Player/Camera") as Camera2D
 
 const TIME_LIMIT_SECONDS = 60
 var mob_scene: PackedScene = preload ("res://prefabs/Villager.tscn")
