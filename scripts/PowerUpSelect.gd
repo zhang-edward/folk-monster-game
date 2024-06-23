@@ -2,12 +2,17 @@ class_name PowerUpSelect
 extends Node2D
 
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
+@onready var title = $CanvasLayer/Control/Label as Label
 @onready var score = $CanvasLayer/Control/Score as Label
 @onready var power_up_boxes: Array[PowerUpBox] = [
 	%PowerUp as PowerUpBox,
 	%PowerUp2 as PowerUpBox,
 	%PowerUp3 as PowerUpBox
 ]
+@onready var continue_button = $CanvasLayer/Control/ContinueButton
+
+var is_displaying_powerup = false
+var is_finished_displaying_powerup = false
 
 const POWER_UPS = [
 	{
@@ -78,9 +83,29 @@ func _ready():
 		var power_up_box = power_up_boxes[i]
 		power_up_box.init_powerup(power_up)
 	PlayerVariables.player_score_updated.connect(on_score_updated)
+	
+func display_powerups():
+	if !is_displaying_powerup:
+		is_displaying_powerup = true
+		var ui_elements_to_show = [title, score, %PowerUp, %PowerUp2, %PowerUp3, continue_button]
+		fade_in_elements(0, ui_elements_to_show)
+
+func fade_in_elements(elem_index: int, elems_to_fade: Array):
+	if elem_index == elems_to_fade.size():
+		is_finished_displaying_powerup = true
+		return
+	var tween = create_tween()
+	var elem = elems_to_fade[elem_index]
+	elem.global_position.y += 10
+	tween.tween_property(elem, "modulate:a", 1, 0.5)
+	tween.parallel().tween_property(elem, "global_position:y", elem.global_position.y - 10, 0.5)
+	
+	var callable = Callable(self, "fade_in_elements").bind(elem_index + 1, elems_to_fade)
+	tween.finished.connect(callable)
 		
 func on_score_updated():
 	score.text = "Infamy: " + str(_player_variables.player_score)
 
 func on_continue():
-	SceneTransition.change_scene_to_file("res://scenes/main.tscn")
+	if is_finished_displaying_powerup:
+		SceneTransition.change_scene_to_file("res://scenes/main.tscn")

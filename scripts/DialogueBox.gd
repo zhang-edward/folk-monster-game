@@ -1,3 +1,4 @@
+class_name DialogueBox
 extends RichTextLabel
 
 signal dialogue_finished()

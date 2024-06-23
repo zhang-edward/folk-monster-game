@@ -33,7 +33,7 @@ func enter(msg:={}):
 	move_to_wander_timer.connect("timeout", callable)
 	add_sibling(move_to_wander_timer)
 	rand_direction = directions.pick_random()
-	sprite.play("walk")
+	sprite.play("run")
 	
 func exit():
 	if move_to_wander_timer != null:

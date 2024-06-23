@@ -16,10 +16,16 @@ var _blood_splatter_particles: PackedScene = preload ("res://prefabs/BloodSplatt
 var effect = null
 
 const FLEE_DIST_THRESHOLD = 150
+
+# Health
 const VILLAGER_BASE_HEALTH = 100
 const GUARD_BASE_HEALTH = 150
 const HEALTH_INCR = 25
 const ROUND_PER_HEALTH_INCR = 5
+
+# Infamy per kill
+const VILLAGER_INFAMY_PER_KILL = 1
+const GUARD_INFAMY_PER_KILL = 2
 
 func _ready():
 	_health = calculate_round_health()
@@ -65,7 +71,11 @@ func damage(amt: int):
 	add_sibling(particles)
 
 	if (_health <= 0):
-		_player_variables.player_score += 1
+		var infamy_gain_level = _player_variables.player_powerup_levels[PlayerVariables.PowerUpTypes.InfamyGain]
+		var score_per_kill = GUARD_INFAMY_PER_KILL if is_guard else VILLAGER_INFAMY_PER_KILL
+		var score_with_mult = score_per_kill * pow(2, infamy_gain_level)
+		_player_variables.player_score += score_with_mult
+		_player_variables.kill_count += 1
 		var corpse = _corpse_scene.instantiate() as Corpse
 		add_sibling(corpse)
 		var v = Vector2(randf() * 200 - 100, randf() * 200 - 100)

@@ -3,7 +3,7 @@ extends State
 @export var ATTACK_FRAME = 4
 
 const SPEED = 150.0
-
+const GUARD_DAMAGE = 25
 var hitbox_scene: PackedScene = preload ("res://prefabs/Hitbox.tscn")
 
 func update(_delta: float) -> void:
@@ -35,7 +35,7 @@ func on_attack_frame():
 	var hitbox = hitbox_scene.instantiate()
 	villager.add_child(hitbox)
 	var hitbox_offset = Vector2( - 50, 0) if sprite.flip_h else Vector2(50, 0)
-	hitbox.init(hitbox_offset, Vector2(50, 20), 0.1, Hitbox.CollideableTypes.Player, randi() % 50 + 30)
+	hitbox.init(hitbox_offset, Vector2(50, 20), 0.1, Hitbox.CollideableTypes.Player, GUARD_DAMAGE)
 
 func on_attack_complete():
 	sprite.play("idle")

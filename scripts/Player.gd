@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const BASE_SPEED = 250
 const BASE_DAMAGE = 20
+const LUNGE_BASE_DAMAGE = 10
 const DAMAGE_UPGRADE_INCREMENT = 5
 const SPEED_UPGRADE_INCREMENT = 25
 const BLOOD_COLOR = 0x7150f8FF
@@ -22,7 +23,7 @@ func calculate_attr_with_powerup(power_up_name: PlayerVariables.PowerUpTypes, ba
 	var power_up_level = _player_variables.player_powerup_levels[power_up_name]
 	return base_val + (power_up_level * incr)
 
-func attack(attack_hand: String, attack_number: String):
+func attack(attack_hand: String, attack_number: String, is_lunge: bool):
 	var effect_offset = Vector2( - 50, 0) if sprite.flip_h else Vector2(50, 0)
 	effect.position = effect_offset
 	effect.flip_h = sprite.flip_h
@@ -33,7 +34,10 @@ func attack(attack_hand: String, attack_number: String):
 	var hitbox = hitbox_scene.instantiate()
 	add_child(hitbox)
 	var hitbox_offset = Vector2( - 50, 0) if sprite.flip_h else Vector2(50, 0)
+	
 	var damage = calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.AttackUp, BASE_DAMAGE, DAMAGE_UPGRADE_INCREMENT)
+	if is_lunge:
+		damage = calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.LungeDamage, LUNGE_BASE_DAMAGE, DAMAGE_UPGRADE_INCREMENT)		
 	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, damage)
 
 func damage(amt: int):

@@ -45,7 +45,7 @@ func on_attack_frame():
 		return
 
 	var player = entity as Player
-	player.attack(_attack_hand, _attack_number)
+	player.attack(_attack_hand, _attack_number, false)
 
 func on_attack_complete():
 	if Input.is_action_pressed("attack"):
