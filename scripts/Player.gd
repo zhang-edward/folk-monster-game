@@ -37,7 +37,7 @@ func attack(attack_hand: String, attack_number: String, is_lunge: bool):
 	
 	var damage = calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.AttackUp, BASE_DAMAGE, DAMAGE_UPGRADE_INCREMENT)
 	if is_lunge:
-		damage = calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.LungeDamage, LUNGE_BASE_DAMAGE, DAMAGE_UPGRADE_INCREMENT)		
+		damage = calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.LungeDamage, LUNGE_BASE_DAMAGE, DAMAGE_UPGRADE_INCREMENT)
 	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, damage)
 
 func damage(amt: int):
@@ -67,9 +67,8 @@ func damage(amt: int):
 	Engine.time_scale = 0.2
 	sprite.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.25, true, false, true).timeout
-
 	Engine.time_scale = 1.0
 	sprite.modulate = Color(1, 1, 1)
 
 	if (health <= 0):
-		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
+		SceneTransition.change_scene_to_file("res://scenes/GameOver.tscn", 5.0)
