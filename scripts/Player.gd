@@ -65,3 +65,6 @@ func damage(amt: int):
 
 	Engine.time_scale = 1.0
 	sprite.modulate = Color(1, 1, 1)
+
+	if (health <= 0):
+		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")

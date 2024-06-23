@@ -10,12 +10,13 @@ func update(_delta: float) -> void:
 	pass
 
 func enter(_msg:={}) -> void:
+	sprite.animation_finished.connect(on_attack_complete)
+	sprite.frame_changed.connect(on_attack_frame)
+
 	sprite.play("attack")
 	sprite.pause()
 	await get_tree().create_timer(0.5).timeout
 	sprite.play("attack")
-	sprite.animation_finished.connect(on_attack_complete)
-	sprite.frame_changed.connect(on_attack_frame)
 
 func exit() -> void:
 	sprite.animation_finished.disconnect(on_attack_complete)
