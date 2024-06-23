@@ -108,4 +108,4 @@ func on_score_updated():
 
 func on_continue():
 	if is_finished_displaying_powerup:
-		SceneTransition.change_scene_to_file("res://scenes/main.tscn")
+		SceneTransition.change_scene_to_file("res://scenes/PreGameScene.tscn")

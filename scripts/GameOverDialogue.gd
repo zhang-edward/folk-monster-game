@@ -17,4 +17,4 @@ func _on_DialogueBox_dialogue_finished():
 	$RestartButton.show()
 
 func _on_RestartButton_pressed():
-	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	get_tree().change_scene_to_file("res://scenes/PreGameScene.tscn")
