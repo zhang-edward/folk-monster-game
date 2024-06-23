@@ -5,6 +5,7 @@ const MAX_VILLAGERS = 10
 @export var villager_scene: PackedScene
 @export var guard_scene: PackedScene
 var villagers: Array[Villager] = []
+var timer: Timer
 
 const BASE_GUARD_SPAWN_RATE = 25
 const GUARD_SPAWN_RATE_INCR = 5
@@ -18,8 +19,9 @@ func spawn_villagers():
 		villager.global_position = self.global_position
 		villagers.append(villager)
 		add_sibling(villager)
+	timer.wait_time = randf() * 3 + 3
 
-func check_villager_alive(villager: Villager):
+func check_villager_alive(villager):
 	return is_instance_valid(villager) and villager._health > 0
 	
 func should_spawn_guard():
@@ -29,10 +31,11 @@ func should_spawn_guard():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var timer = Timer.new()
+	timer = Timer.new()
 	timer.autostart = true
 	timer.one_shot = false
-	timer.wait_time = 3.5
-	var callable = Callable(self, "spawn_villagers")
-	timer.connect("timeout", callable)
+	timer.wait_time = 1
+	timer.timeout.connect(spawn_villagers)
+	# var callable = Callable(self, "spawn_villagers")
+	# timer.connect("timeout", callable)
 	add_child(timer)
