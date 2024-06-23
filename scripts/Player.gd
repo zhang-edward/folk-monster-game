@@ -66,6 +66,7 @@ func damage(amt: int):
 
 	Engine.time_scale = 0.2
 	sprite.modulate = Color(1, 0, 0)
+	$Camera.add_trauma(0.5)
 	await get_tree().create_timer(0.25, true, false, true).timeout
 	Engine.time_scale = 1.0
 	sprite.modulate = Color(1, 1, 1)
