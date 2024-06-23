@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bxpbfos85xa3g"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bxpbfos85xa3g"]
 
 [ext_resource type="Texture2D" uid="uid://c1vdeygh181xc" path="res://sprites/villager/villager4.png" id="1_uk601"]
 
@@ -17,6 +17,14 @@ region = Rect2(24, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_weljb"]
 atlas = ExtResource("1_uk601")
 region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr6hj"]
+atlas = ExtResource("1_uk601")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k3pb"]
+atlas = ExtResource("1_uk601")
+region = Rect2(120, 0, 24, 24)
 
 [resource]
 animations = [{
@@ -45,5 +53,16 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr6hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k3pb")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]

@@ -2,6 +2,7 @@ extends Node2D
 class_name Main
 
 @export var num_villagers = 50
+@export var num_guards = 20
 @onready var time_remaining_label = $CanvasLayer/GUI/TimeRemaining as Label
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
 @onready var player: Player = %Player as Player
@@ -17,9 +18,14 @@ func _ready():
 	# Spawns villagers
 	var villagers = []
 	for i in range(num_villagers):
-		var villager = guard_scene.instantiate()
+		var villager = mob_scene.instantiate()
 		villager.position = Vector2(randi() % 1000 - 500, randi() % 800 - 400)
 		villagers.append(villager)
+		add_child(villager)
+
+	for i in range(num_guards):
+		var villager = guard_scene.instantiate()
+		villager.position = Vector2(randi() % 1000 - 500, randi() % 800 - 400)
 		add_child(villager)
 	
 	# Set a time limit for the night
