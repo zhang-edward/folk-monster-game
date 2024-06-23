@@ -1,7 +1,7 @@
 extends State
 
 @onready var player = get_node("/root/Main/Player") as Player
-const RUN_SPEED = 150
+const RUN_SPEED = 125
 const FLEE_DIST_THRESHOLD = 200
 
 func update(_delta: float) -> void:

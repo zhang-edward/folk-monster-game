@@ -1,6 +1,6 @@
 extends CanvasModulate
 
-var START_COLOR = Color.hex(0x414098FF)
+var START_COLOR = Color.hex(0x2c2b66FF)
 var END_COLOR = Color.hex(0xD98027FF)
 
 var main_node: Main

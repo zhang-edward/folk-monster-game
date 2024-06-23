@@ -1,5 +1,7 @@
 extends State
 
+var last_nonzero_velocity = Vector2.ZERO
+
 func update(_delta: float) -> void:
 	var player = entity as Player
 	var direction_x = Input.get_axis("move_left", "move_right")
@@ -15,13 +17,14 @@ func update(_delta: float) -> void:
 	if player.velocity.x == 0 and player.velocity.y == 0:
 		sprite.play("idle")
 	else:
+		last_nonzero_velocity = player.velocity
 		sprite.play("walk")
 
 func handle_input(input: InputEvent) -> void:
 	if Input.is_action_just_pressed("attack"):
 		state_machine.transition_to("MeleeAttack", {})
 	if Input.is_action_just_pressed("lunge"):
-		state_machine.transition_to("Lunge", {})
+		state_machine.transition_to("Lunge", {"velocity": last_nonzero_velocity})
 
 func enter(_msg:={}) -> void:
 	pass
