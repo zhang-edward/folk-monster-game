@@ -4,14 +4,14 @@
 [ext_resource type="Script" path="res://scripts/BloodSplatterParticles.gd" id="2_rd8ur"]
 
 [sub_resource type="Gradient" id="Gradient_5yo5l"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.75, 0.75, 0.75, 1, 1, 1, 1, 1)
 
 [node name="BloodSplatterParticles" type="CPUParticles2D"]
 z_index = -20
 position = Vector2(-4.33681e-19, -2.1684e-19)
 rotation = 0.00222609
 emitting = false
-amount = 20
+amount = 10
 lifetime = 5.0
 one_shot = true
 speed_scale = 4.0
@@ -27,7 +27,7 @@ damping_min = 200.0
 damping_max = 200.0
 angle_max = 360.0
 scale_amount_min = 2.0
-scale_amount_max = 4.0
+scale_amount_max = 6.0
 color = Color(0.792157, 0, 0.145098, 1)
 color_initial_ramp = SubResource("Gradient_5yo5l")
 script = ExtResource("2_rd8ur")

@@ -1,0 +1,96 @@
+[gd_scene load_steps=17 format=3 uid="uid://b136y2lye8q4w"]
+
+[ext_resource type="Script" path="res://scripts/Villager.gd" id="1_pc0l1"]
+[ext_resource type="PackedScene" path="res://prefabs/DamageNumber.tscn" id="2_nhld0"]
+[ext_resource type="SpriteFrames" uid="uid://djo4dx3hhoh1l" path="res://animations/GuardVillager1.tres" id="3_gcfgj"]
+[ext_resource type="Texture2D" uid="uid://khjfpp8apav4" path="res://sprites/villager/stab.png" id="4_5l6yx"]
+[ext_resource type="Script" path="res://scripts/fsm/StateMachine.gd" id="4_xedbn"]
+[ext_resource type="Script" path="res://scripts/fsm/PatrolState.gd" id="5_tsti6"]
+[ext_resource type="Script" path="res://scripts/fsm/ChaseState.gd" id="6_vjrj5"]
+[ext_resource type="AudioStream" uid="uid://c1t06gav0qjiu" path="res://sfx/slash.wav" id="7_86iqb"]
+[ext_resource type="Script" path="res://scripts/fsm/GuardAttack.gd" id="8_ftmgw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lihtq"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uspg"]
+atlas = ExtResource("4_5l6yx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c82wf"]
+atlas = ExtResource("4_5l6yx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80cqf"]
+atlas = ExtResource("4_5l6yx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj5n4"]
+atlas = ExtResource("4_5l6yx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytdgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uspg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c82wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80cqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj5n4")
+}],
+"loop": false,
+"name": &"stab",
+"speed": 20.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pq078"]
+streams_count = 1
+random_pitch = 1.5
+stream_0/stream = ExtResource("7_86iqb")
+stream_0/weight = 1.0
+
+[node name="GuardVillager" type="CharacterBody2D"]
+script = ExtResource("1_pc0l1")
+damage_number = ExtResource("2_nhld0")
+is_guard = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("3_gcfgj")
+animation = &"run"
+offset = Vector2(2.08165e-12, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_lihtq")
+
+[node name="Effect" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(2.593, 3)
+sprite_frames = SubResource("SpriteFrames_ytdgm")
+animation = &"stab"
+frame = 3
+frame_progress = 1.0
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_xedbn")
+initial_state = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="StateMachine"]
+script = ExtResource("5_tsti6")
+
+[node name="Chase" type="Node" parent="StateMachine"]
+script = ExtResource("6_vjrj5")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("8_ftmgw")
+ATTACK_FRAME = 1
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_pq078")

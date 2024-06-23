@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmmot5etbhluq"]
+[gd_scene load_steps=10 format=3 uid="uid://bmmot5etbhluq"]
 
 [ext_resource type="Script" path="res://scripts/PowerUpSelect.gd" id="1_4xnrr"]
 [ext_resource type="Script" path="res://scripts/PowerUpBox.gd" id="2_l73ih"]
 [ext_resource type="FontFile" uid="uid://13j87krg6v02" path="res://MorrisRoman-Black.ttf" id="3_3xjaw"]
 [ext_resource type="Script" path="res://scripts/DialogueBox.gd" id="3_5uakd"]
 [ext_resource type="Texture2D" uid="uid://bdtfoitttphe3" path="res://sprites/art/old_man_storytelling.png" id="3_kty17"]
+[ext_resource type="Script" path="res://scripts/StorytellingDialogue.gd" id="3_l3x51"]
 [ext_resource type="Texture2D" uid="uid://c5id0egdocnqy" path="res://sprites/blood_splatter1.png" id="4_1hdir"]
 [ext_resource type="AudioStream" uid="uid://drqthui4xkd4h" path="res://sfx/old_man_talking.wav" id="7_eo563"]
 [ext_resource type="AudioStream" uid="uid://dsdtbcva183pg" path="res://music/PerituneMaterial_Creep_loop.ogg" id="7_oad7q"]
@@ -246,7 +247,13 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Continue"
 
-[node name="DialogueBox" type="RichTextLabel" parent="CanvasLayer/Control" node_paths=PackedStringArray("voice")]
+[node name="StorytellingDialogue" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_l3x51")
+
+[node name="DialogueBox" type="RichTextLabel" parent="CanvasLayer/Control/StorytellingDialogue" node_paths=PackedStringArray("voice")]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
@@ -257,9 +264,9 @@ theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "test"
 script = ExtResource("3_5uakd")
-voice = NodePath("../../../OldManVoice")
+voice = NodePath("../../../../OldManVoice")
 
-[node name="VoiceTimer" type="Timer" parent="CanvasLayer/Control/DialogueBox"]
+[node name="VoiceTimer" type="Timer" parent="CanvasLayer/Control/StorytellingDialogue/DialogueBox"]
 wait_time = 0.1
 
 [node name="OldManStorytelling" type="Sprite2D" parent="."]

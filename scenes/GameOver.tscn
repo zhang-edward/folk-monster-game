@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://j7oimhugysc0"]
+
+[ext_resource type="Texture2D" uid="uid://bdtfoitttphe3" path="res://sprites/art/old_man_storytelling.png" id="1_27a27"]
+[ext_resource type="Script" path="res://scripts/GameOverDialogue.gd" id="1_rybcx"]
+[ext_resource type="FontFile" uid="uid://13j87krg6v02" path="res://MorrisRoman-Black.ttf" id="2_b8rqu"]
+[ext_resource type="Texture2D" uid="uid://c5id0egdocnqy" path="res://sprites/blood_splatter1.png" id="2_wg2t3"]
+[ext_resource type="Script" path="res://scripts/DialogueBox.gd" id="3_ivepb"]
+[ext_resource type="AudioStream" uid="uid://drqthui4xkd4h" path="res://sfx/old_man_talking.wav" id="6_8k1at"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverDialogue" type="Control" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rybcx")
+
+[node name="DialogueBox" type="RichTextLabel" parent="CanvasLayer/Control/GameOverDialogue" node_paths=PackedStringArray("voice")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_b8rqu")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "test"
+script = ExtResource("3_ivepb")
+voice = NodePath("../../../../OldManVoice")
+
+[node name="VoiceTimer" type="Timer" parent="CanvasLayer/Control/GameOverDialogue/DialogueBox"]
+wait_time = 0.1
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/Control/GameOverDialogue"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -282.0
+offset_top = -64.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Rise once more (Restart)"
+
+[node name="OldManStorytelling" type="Sprite2D" parent="."]
+position = Vector2(594, 470)
+scale = Vector2(3, 3)
+texture = ExtResource("1_27a27")
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -1000
+position = Vector2(515, 204)
+scale = Vector2(150, 150)
+texture = ExtResource("2_wg2t3")
+metadata/_edit_lock_ = true
+
+[node name="OldManVoice" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_8k1at")
+volume_db = -2.343
