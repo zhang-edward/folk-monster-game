@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cui72376eykj5"]
+[gd_scene load_steps=27 format=3 uid="uid://brcmq6uju8p0h"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_6t82a"]
 [ext_resource type="Texture2D" uid="uid://cw363g4326dph" path="res://sprites/props/Lamp_1.png" id="1_ftpv7"]
@@ -13,6 +13,9 @@
 [ext_resource type="FontFile" uid="uid://wmioc3kb2wi" path="res://vinque rg.otf" id="10_0dsk3"]
 [ext_resource type="FontFile" uid="uid://13j87krg6v02" path="res://MorrisRoman-Black.ttf" id="11_aeoif"]
 [ext_resource type="AudioStream" uid="uid://bwdv0an6i7ng" path="res://music/Peritune_Cryptic_Canvas_loop.mp3" id="12_ipf7u"]
+[ext_resource type="Texture2D" uid="uid://dimvafecqheci" path="res://sprites/player/beast.png" id="13_1ixec"]
+[ext_resource type="Texture2D" uid="uid://uhrn8ld2klri" path="res://sprites/villager/villager1.png" id="14_02geb"]
+[ext_resource type="Texture2D" uid="uid://c3pp2yt7tdqrg" path="res://sprites/villager/guard1.png" id="15_etlci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1unm6"]
 size = Vector2(12.6667, 28)
@@ -25,6 +28,25 @@ size = Vector2(149.8, 73.4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ots"]
 size = Vector2(74.6, 32.8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee8rw"]
+bg_color = Color(0, 0, 0, 0.705882)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njpco"]
+atlas = ExtResource("13_1ixec")
+region = Rect2(6, 10, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43hcw"]
+atlas = ExtResource("14_02geb")
+region = Rect2(2.08165e-12, 2.08165e-12, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq1u3"]
+atlas = ExtResource("15_etlci")
+region = Rect2(2.08165e-12, 2.08165e-12, 24, 24)
 
 [sub_resource type="Animation" id="Animation_mgiqb"]
 resource_name = "Start"
@@ -351,7 +373,8 @@ polygon = PackedVector2Array(-53.6667, -57.6667, -53, 14.3333, -85.6667, 43, -85
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Menu" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -359,7 +382,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -379,7 +402,7 @@ theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "[center][wave amp=25 freq=3]Wolf of Wordcraft"
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/Control"]
+[node name="PlayButton" type="Button" parent="CanvasLayer/Menu"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -396,6 +419,139 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("11_aeoif")
 theme_override_font_sizes/font_size = 20
 text = "Play"
+
+[node name="TutorialButton" type="Button" parent="CanvasLayer/Menu"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = 112.0
+offset_right = 76.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_aeoif")
+theme_override_font_sizes/font_size = 20
+text = "How to Play"
+
+[node name="Tutorial" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Tutorial/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ee8rw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+texture = SubResource("AtlasTexture_njpco")
+stretch_mode = 5
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("11_aeoif")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]This is you.
+
+Move with the [color=lightblue][arrow keys][/color] or [color=lightblue][w/a/s/d][/color].
+Press / hold [color=lightblue][Space][/color] to attack with your claws.
+Press [color=lightblue][Shift][/color] to lunge."
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture = SubResource("AtlasTexture_43hcw")
+stretch_mode = 5
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("11_aeoif")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]Villagers will [color=red]flee[/color] from you.
+Kill them to gain [color=yellow]infamy[/color]."
+fit_content = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture = SubResource("AtlasTexture_rq1u3")
+stretch_mode = 5
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("11_aeoif")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]Guards will [color=red]attack[/color] you.
+Kill them gives you more [color=yellow]infamy[/color],
+but if you die, you lose!"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("11_aeoif")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]
+
+At the end of the night, your legend lives on in the [color=yellow][wave]folklore[/wave][/color] of the village folk. 
+
+[color=yellow]The more infamous you are, the stronger you become!
+
+"
+fit_content = true
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Tutorial/MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(144, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("11_aeoif")
+theme_override_font_sizes/font_size = 20
+text = "Done"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
