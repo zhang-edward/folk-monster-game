@@ -29,14 +29,14 @@ func init_powerup(power_up) -> void:
 		select_button.modulate = Color(1, 0, 0)
 	else:
 		select_button.modulate = Color(1, 1, 1)
-	select_button.text = "Get (" + str(power_up_cost) + "SP)"
+	select_button.text = str(power_up_cost) + " Infamy"
 
 func select_powerup():
 	if power_up_cost <= _player_variables.player_score:
 		_player_variables.update_player_score(_player_variables.player_score - power_up_cost)
 		_player_variables.player_powerup_levels[power_up.type] += 1
 		powerup_name_label.hide()
-		powerup_description_label.text = "Sold out!"
+		powerup_description_label.text = "Acquired!"
 		select_button.hide()
 
 func is_ability_upgrade(powerup_name) -> void:

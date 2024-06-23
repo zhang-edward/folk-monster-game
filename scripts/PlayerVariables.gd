@@ -1,6 +1,7 @@
 extends Node
 
 var player_score := 0
+var generation_number = 0
 var player_power_ups = []
 
 # Power ups
@@ -11,7 +12,7 @@ enum PowerUpTypes {
 	DefenseUp,
 	SpeedUp,
 	TimeWarp,
-	SoulHarvest,
+	InfamyGain,
 	AttackSpeed,
 	LungeDamage,
 }
@@ -23,7 +24,7 @@ var player_powerup_levels = {
 	PowerUpTypes.DefenseUp: 0,
 	PowerUpTypes.SpeedUp: 0,
 	PowerUpTypes.TimeWarp: 0,
-	PowerUpTypes.SoulHarvest: 0,
+	PowerUpTypes.InfamyGain: 0,
 	PowerUpTypes.AttackSpeed: 0,
 	PowerUpTypes.LungeDamage: 0,
 }

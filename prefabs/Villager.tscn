@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5faxla4fhqsr"]
+[gd_scene load_steps=12 format=3 uid="uid://b5faxla4fhqsr"]
 
 [ext_resource type="Script" path="res://scripts/Villager.gd" id="1_7tvhq"]
 [ext_resource type="PackedScene" uid="uid://co01661atigyf" path="res://prefabs/DamageNumber.tscn" id="2_784rf"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://scripts/fsm/IdleState.gd" id="4_c5nv6"]
 [ext_resource type="Script" path="res://scripts/fsm/FleeState.gd" id="5_yd4qx"]
 [ext_resource type="AudioStream" uid="uid://c1t06gav0qjiu" path="res://sfx/slash.wav" id="6_aoio5"]
-[ext_resource type="Script" path="res://scripts/Wander.gd" id="7_yjudp"]
+[ext_resource type="Script" path="res://scripts/fsm/WanderState.gd" id="7_x6p5v"]
+[ext_resource type="Script" path="res://scripts/fsm/LeaveHomeState.gd" id="8_6y602"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lihtq"]
 radius = 6.0
@@ -35,7 +36,7 @@ shape = SubResource("CircleShape2D_lihtq")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_dewl8")
-initial_state = NodePath("Wander")
+initial_state = NodePath("LeaveHome")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_c5nv6")
@@ -44,7 +45,10 @@ script = ExtResource("4_c5nv6")
 script = ExtResource("5_yd4qx")
 
 [node name="Wander" type="Node" parent="StateMachine"]
-script = ExtResource("7_yjudp")
+script = ExtResource("7_x6p5v")
+
+[node name="LeaveHome" type="Node" parent="StateMachine"]
+script = ExtResource("8_6y602")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_pq078")
