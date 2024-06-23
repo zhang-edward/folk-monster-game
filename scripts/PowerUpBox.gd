@@ -32,12 +32,9 @@ func init_powerup(power_up) -> void:
 	select_button.text = str(power_up_cost) + " Infamy"
 
 func select_powerup():
-	if power_up_cost <= _player_variables.player_score:
+	if power_up_cost <= _player_variables.player_score and power_up_select.is_finished_displaying_powerup:
 		_player_variables.update_player_score(_player_variables.player_score - power_up_cost)
 		_player_variables.player_powerup_levels[power_up.type] += 1
 		powerup_name_label.hide()
 		powerup_description_label.text = "Acquired!"
 		select_button.hide()
-
-func is_ability_upgrade(powerup_name) -> void:
-	pass

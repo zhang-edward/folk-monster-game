@@ -1,5 +1,7 @@
 extends Control
 
+@onready var power_up_select = $"../../.." as PowerUpSelect
+
 const INTRO_OPTIONS = [
 	"Gather 'round, children. Long ago, a monstrous creature haunted our village at night.",
 	"Come closer, little ones. In days of old, a terrifying beast prowled our village under the cover of darkness.",
@@ -39,8 +41,13 @@ const POWERUP_OPTIONS = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var text = ""
-	var score = (get_node("/root/PlayerVariables") as PlayerVariables).player_score
+	var score = (get_node("/root/PlayerVariables") as PlayerVariables).kill_count
 	text += INTRO_OPTIONS[randi() % INTRO_OPTIONS.size()] + "\n\n"
 	text += KILL_COUNT_OPTIONS[randi() % KILL_COUNT_OPTIONS.size()].replace("X", str(score)) + "\n\n"
 	text += POWERUP_OPTIONS[randi() % POWERUP_OPTIONS.size()] + "\n\n"
 	$DialogueBox.init(text)
+	$DialogueBox.dialogue_finished.connect(on_dialogue_finished)
+	
+	
+func on_dialogue_finished():
+	power_up_select.display_powerups()

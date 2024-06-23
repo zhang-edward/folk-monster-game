@@ -24,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -39,6 +40,7 @@ text = "Fill in the story!"
 horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -70,6 +72,7 @@ alignment = 1
 
 [node name="PowerUp" type="ColorRect" parent="CanvasLayer/Control/HBoxContainer"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
 color = Color(0, 0, 0, 0.196078)
@@ -132,6 +135,7 @@ autowrap_mode = 2
 
 [node name="PowerUp2" type="ColorRect" parent="CanvasLayer/Control/HBoxContainer"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
 color = Color(0, 0, 0, 0.196078)
@@ -194,6 +198,7 @@ autowrap_mode = 2
 
 [node name="PowerUp3" type="ColorRect" parent="CanvasLayer/Control/HBoxContainer"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
 color = Color(0, 0, 0, 0.196078)
@@ -255,6 +260,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="ContinueButton" type="Button" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

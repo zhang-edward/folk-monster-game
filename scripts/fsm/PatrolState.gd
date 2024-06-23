@@ -30,4 +30,6 @@ func update(delta: float) -> void:
 		villager.move_and_slide()
 
 func enter(_msg:={}) -> void:
+	var villager = entity as Villager
+	villager.velocity = Vector2.ZERO
 	sprite.play("idle")
