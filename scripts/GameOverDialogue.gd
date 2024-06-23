@@ -19,8 +19,15 @@ func _ready():
 	$RestartButton.pressed.connect(_on_RestartButton_pressed)
 	$RestartButton.hide()
 
+	$MainMenuButton.pressed.connect(_on_MainMenuButton_pressed)
+	$MainMenuButton.hide()
+
 func _on_DialogueBox_dialogue_finished():
 	$RestartButton.show()
+	$MainMenuButton.show()
 
 func _on_RestartButton_pressed():
-	get_tree().change_scene_to_file("res://scenes/PreGameScene.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/PreGameScene.tscn")
+
+func _on_MainMenuButton_pressed():
+	SceneTransition.change_scene_to_file("res://scenes/MainMenu.tscn")

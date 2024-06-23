@@ -10,4 +10,5 @@ func _process(delta):
 
 func _on_PlayButton_pressed():
 	%AnimationPlayer.play("Start")
+	await get_tree().create_timer(2.0).timeout
 	SceneTransition.change_scene_to_file("res://scenes/PreGameScene.tscn")

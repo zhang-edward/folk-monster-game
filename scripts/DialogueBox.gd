@@ -15,6 +15,7 @@ var _last_char = ""
 @export var skippable: bool = false
 @onready var voice_timer: Timer = $VoiceTimer
 var text_no_bb_code: String = ""
+var done := false
 
 # Called when the node enters the scene tree for the first time.
 func init(txt: String):
@@ -29,10 +30,14 @@ func init(txt: String):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if done:
+		return
+
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and skippable:
 		visible_characters = text.length()
 		voice_timer.stop()
 		dialogue_finished.emit()
+		done = true
 		return
 
 	if _t > _scroll_interval:
@@ -52,6 +57,7 @@ func _process(delta):
 			voice_timer.start()
 	
 	if visible_characters == text_no_bb_code.length():
+		done = true
 		voice_timer.stop()
 		dialogue_finished.emit()
 
