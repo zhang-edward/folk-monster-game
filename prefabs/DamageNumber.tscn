@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://co01661atigyf"]
+
+[ext_resource type="Script" path="res://scripts/DamageNumber.gd" id="1_cge1p"]
+[ext_resource type="FontFile" uid="uid://bvmusgs6bn04r" path="res://pixelmix.ttf" id="1_pwwqx"]
+
+[node name="DamageNumber" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_pwwqx")
+theme_override_font_sizes/font_size = 25
+text = "test"
+script = ExtResource("1_cge1p")

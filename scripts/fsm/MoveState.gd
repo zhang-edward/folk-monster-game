@@ -1,12 +1,11 @@
 extends State
 
-const SPEED = 300.0
-
 func update(_delta: float) -> void:
 	var player = entity as Player
 	var direction_x = Input.get_axis("move_left", "move_right")
 	var direction_y = Input.get_axis("move_up", "move_down")
-	player.velocity = Vector2(direction_x, direction_y).normalized() * SPEED
+	var speed = player.calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.SpeedUp, Player.BASE_SPEED, Player.SPEED_UPGRADE_INCREMENT)
+	player.velocity = Vector2(direction_x, direction_y).normalized() * speed
 	if direction_x < 0:
 		sprite.flip_h = true
 	elif direction_x > 0:

@@ -13,42 +13,58 @@ const POWER_UPS = [
 	{
 		"name": "Attack Up",
 		"type": PlayerVariables.PowerUpTypes.AttackUp,
-		"description": "Increase damage of basic attack by 1",
-		"cost": 2
+		"description": "Increase damage of basic attack by 5",
+		"cost": 10
 	},
 	{
-		"name": "Defense Up",
-		"type": PlayerVariables.PowerUpTypes.DefenseUp,
-		"description": "Decrease incoming damage by 1",
-		"cost": 2
+		"name": "Attack Speed Up",
+		"type": PlayerVariables.PowerUpTypes.AttackSpeed,
+		"description": "Increase attack speed by 10%",
+		"cost": 10
 	},
+#	{
+#		"name": "Defense Up",
+#		"type": PlayerVariables.PowerUpTypes.DefenseUp,
+#		"description": "Decrease incoming damage by 5",
+#		"cost": 2
+#	},
 	{
 		"name": "Speed Up",
 		"type": PlayerVariables.PowerUpTypes.SpeedUp,
 		"description": "Increase movement speed by 10",
-		"cost": 2
+		"cost": 10
 	},
 	{
-		"name": "Acid Spit",
-		"type": PlayerVariables.PowerUpTypes.AcidSpit,
-		"description": "Launch an acid ball forward",
-		"upgradeDescription": "Launch 1 more acid",
-		"cost": 3
+		"name": "Time Warp",
+		"description": "Increase length of the night by 5 seconds",
+		"cost": 25
 	},
 	{
-		"name": "Lunge",
-		"type": PlayerVariables.PowerUpTypes.Lunge,
-		"description": "Charge forward rapidly",
-		"upgradeDescription": "Lunge further",
-		"cost": 3
-	},
-	{
-		"name": "Fire Breath",
-		"type": PlayerVariables.PowerUpTypes.FireBreath,
-		"description": "Breath a cone of fire in front of you",
-		"upgradeDescription": "Impact a wider area of effect",
-		"cost": 3
+		"name": "Soul Harvest Up",
+		"description": "Harvest 2 souls per kill",
+		"cost": 50
 	}
+#	{
+#		"name": "Acid Spit",
+#		"type": PlayerVariables.PowerUpTypes.AcidSpit,
+#		"description": "Launch an acid ball forward",
+#		"upgradeDescription": "Launch 1 more acid",
+#		"cost": 3
+#	},
+#	{
+#		"name": "Lunge",
+#		"type": PlayerVariables.PowerUpTypes.Lunge,
+#		"description": "Charge forward rapidly",
+#		"upgradeDescription": "Lunge further",
+#		"cost": 3
+#	},
+#	{
+#		"name": "Fire Breath",
+#		"type": PlayerVariables.PowerUpTypes.FireBreath,
+#		"description": "Breath a cone of fire in front of you",
+#		"upgradeDescription": "Impact a wider area of effect",
+#		"cost": 3
+#	}
 ]
 
 func _ready():
