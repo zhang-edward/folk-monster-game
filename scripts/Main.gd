@@ -4,8 +4,9 @@ extends Node2D
 @export var num_villagers = 10
 @onready var time_remaining_label = $CanvasLayer/GUI/TimeRemaining as Label
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
+@onready var player: Player = %Player as Player
 
-const TIME_LIMIT_SECONDS = 10
+const TIME_LIMIT_SECONDS = 60
 var time_remaining
 
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +21,7 @@ func _ready():
 		add_child(villager)
 	
 	# Set a time limit for the night
-	time_remaining = TIME_LIMIT_SECONDS
+	time_remaining = player.calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.TimeWarp, TIME_LIMIT_SECONDS, 5)
 	time_remaining_label.text = "Time remaining: " + str(time_remaining)
 	var timer = Timer.new()
 	timer.autostart = true

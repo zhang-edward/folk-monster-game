@@ -7,6 +7,7 @@ const FLEE_DIST_THRESHOLD = 200
 @onready var _state_machine: StateMachine = get_node("StateMachine")
 @onready var _sprite: AnimatedSprite2D = $Sprite
 @onready var player: Player = get_node("/root/Main/Player") as Player
+@export var damage_number: PackedScene
 
 var _corpse_scene = preload ("res://prefabs/Corpse.tscn")
 var _effect_scene = preload ("res://prefabs/Effect.tscn")
@@ -17,11 +18,14 @@ var _health = 100
 
 func _ready():
 	var villager_num = randi() % 3 + 1
-	print(villager_num)
 	_sprite.frames = load("res://animations/Villager" + str(villager_num) + ".tres")
 
 func damage(amt: int):
 	_health -= amt
+	var new_damage_number = damage_number.instantiate()
+	new_damage_number.global_position = _sprite.global_position
+	new_damage_number.text = str(amt)
+	add_sibling(new_damage_number)
 
 	# SFX
 	$HitSound.play()

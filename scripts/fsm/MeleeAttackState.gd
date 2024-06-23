@@ -30,8 +30,9 @@ func enter(msg:={}) -> void:
 		_attack_hand = "r"
 
 	_attack_number = "1" if randf() < 0.5 else "2"
-
-	sprite.play("attack_" + _attack_hand + _attack_number)
+	var player = entity as Player
+	var attack_speed = player.calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.AttackSpeed, 1.0, 0.1)
+	sprite.play("attack_" + _attack_hand + _attack_number, attack_speed)
 	sprite.animation_finished.connect(on_attack_complete)
 	sprite.frame_changed.connect(on_attack_frame)
 
@@ -54,7 +55,8 @@ func on_attack_frame():
 	var hitbox = hitbox_scene.instantiate()
 	player.add_child(hitbox)
 	var hitbox_offset = Vector2( - 50, 0) if sprite.flip_h else Vector2(50, 0)
-	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, randi() % 50 + 30)
+	var damage = player.calculate_attr_with_powerup(PlayerVariables.PowerUpTypes.AttackUp, Player.BASE_DAMAGE, Player.DAMAGE_UPGRADE_INCREMENT)
+	hitbox.init(hitbox_offset, Vector2(100, 100), 0.25, Hitbox.CollideableTypes.Villager, damage)
 
 func on_attack_complete():
 	if Input.is_action_pressed("attack"):
