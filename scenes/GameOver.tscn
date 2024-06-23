@@ -45,6 +45,7 @@ bbcode_enabled = true
 text = "test"
 script = ExtResource("3_ivepb")
 voice = NodePath("../../../../OldManVoice")
+skippable = true
 
 [node name="VoiceTimer" type="Timer" parent="CanvasLayer/Control/GameOverDialogue/DialogueBox"]
 wait_time = 0.1

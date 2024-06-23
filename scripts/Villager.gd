@@ -18,8 +18,8 @@ var effect = null
 const FLEE_DIST_THRESHOLD = 150
 
 # Health
-const VILLAGER_BASE_HEALTH = 75
-const GUARD_BASE_HEALTH = 150
+const VILLAGER_BASE_HEALTH = 40
+const GUARD_BASE_HEALTH = 75
 const HEALTH_INCR = 25
 const ROUND_PER_HEALTH_INCR = 5
 
