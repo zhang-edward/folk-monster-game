@@ -18,7 +18,7 @@ var effect = null
 const FLEE_DIST_THRESHOLD = 150
 
 # Health
-const VILLAGER_BASE_HEALTH = 100
+const VILLAGER_BASE_HEALTH = 75
 const GUARD_BASE_HEALTH = 150
 const HEALTH_INCR = 25
 const ROUND_PER_HEALTH_INCR = 5
@@ -37,12 +37,10 @@ func _ready():
 		var villager_num = randi() % 4 + 1
 		_sprite.frames = load("res://animations/Villager" + str(villager_num) + ".tres")
 
-
 func calculate_round_health():
 	# Make villager health increase every few rounds
 	var base_health = GUARD_BASE_HEALTH if is_guard else VILLAGER_BASE_HEALTH
 	return base_health + (int(_player_variables.generation_number) / int(ROUND_PER_HEALTH_INCR)) * HEALTH_INCR
-	
 
 func damage(amt: int):
 	_health -= amt

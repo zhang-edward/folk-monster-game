@@ -9,7 +9,7 @@ var move_to_wander_timer: Timer
 var directions = [
 	Vector2(0, 1),
 	Vector2(1, 1),
-	Vector2(-1, 1)
+	Vector2( - 1, 1)
 ]
 
 var rand_direction
@@ -33,7 +33,7 @@ func enter(msg:={}):
 	move_to_wander_timer.connect("timeout", callable)
 	add_sibling(move_to_wander_timer)
 	rand_direction = directions.pick_random()
-	sprite.play("run")
+	sprite.play("walk")
 	
 func exit():
 	if move_to_wander_timer != null:

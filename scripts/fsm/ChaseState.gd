@@ -25,4 +25,4 @@ func update(_delta: float) -> void:
 	villager.move_and_slide()
 
 func enter(_msg:={}) -> void:
-	sprite.play("run")
+	sprite.play("walk")

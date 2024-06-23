@@ -21,7 +21,7 @@ func update(delta: float) -> void:
 			villager.velocity = Vector2(randf() * 200 - 100, randf() * 200 - 100).normalized() * WANDER_SPEED
 			sprite.flip_h = villager.velocity.x < 0
 			_t = randf() * 2 + 1
-			sprite.play("run")
+			sprite.play("walk")
 		if _wandering and _t <= 0:
 			_wandering = false
 			villager.velocity = Vector2.ZERO
