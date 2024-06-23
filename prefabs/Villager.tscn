@@ -43,3 +43,4 @@ script = ExtResource("5_yd4qx")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_pq078")
+volume_db = -3.748
