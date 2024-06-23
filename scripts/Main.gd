@@ -1,4 +1,5 @@
 extends Node2D
+class_name Main
 
 @export var mob_scene: PackedScene
 @export var num_villagers = 50
