@@ -35,3 +35,7 @@ signal player_score_updated
 func update_player_score(new_player_score):
 	player_score = new_player_score
 	player_score_updated.emit()
+
+func reset_player_powerup_level():
+	for key in player_powerup_levels:
+		player_powerup_levels[key] = 0

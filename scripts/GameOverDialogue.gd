@@ -27,7 +27,16 @@ func _on_DialogueBox_dialogue_finished():
 	$MainMenuButton.show()
 
 func _on_RestartButton_pressed():
+	reset_player_variables()
 	SceneTransition.change_scene_to_file("res://scenes/PreGameScene.tscn")
 
 func _on_MainMenuButton_pressed():
+	reset_player_variables()
 	SceneTransition.change_scene_to_file("res://scenes/MainMenu.tscn")
+
+
+func reset_player_variables():
+	_player_variables.generation_number = 1
+	_player_variables.kill_count = 0
+	_player_variables.player_score = 0
+	_player_variables.reset_player_powerup_level()

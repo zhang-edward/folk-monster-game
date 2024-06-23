@@ -29,6 +29,7 @@ func _process(delta):
 
 	if time_remaining <= 0 and not _switching_scenes:
 		_switching_scenes = true
+		_player_variables.generation_number += 1
 		%SceneAnimationPlayer.play("fade_in")
 		await %SceneAnimationPlayer.animation_finished
 		SceneTransition.change_scene_to_file("res://scenes/PowerUpSelect.tscn", 3.0)
