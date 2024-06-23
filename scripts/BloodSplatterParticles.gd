@@ -7,6 +7,5 @@ func _ready():
 
 func _process(delta):
 	timer += delta
-	print(timer)
 	if timer >= 1:
 		speed_scale = 0

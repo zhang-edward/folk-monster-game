@@ -5,7 +5,7 @@ extends Node2D
 @onready var time_remaining_label = $CanvasLayer/GUI/TimeRemaining as Label
 @onready var _player_variables := get_node("/root/PlayerVariables") as PlayerVariables
 
-const TIME_LIMIT_SECONDS = 10
+const TIME_LIMIT_SECONDS = 200
 var time_remaining
 
 # Called when the node enters the scene tree for the first time.

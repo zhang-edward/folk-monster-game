@@ -607,6 +607,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
+
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 120.0
 one_shot = true
@@ -682,7 +683,6 @@ texture = ExtResource("6_fc8ut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/HouseHayStone1/StaticBody2D"]
 position = Vector2(2.08165e-12, 5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tipsn")
 
 [node name="HouseHayStone4" type="Sprite2D" parent="Env"]
@@ -695,7 +695,6 @@ texture = ExtResource("6_fc8ut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/HouseHayStone4/StaticBody2D"]
 position = Vector2(2.08165e-12, 5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tipsn")
 
 [node name="HouseHayStone2" type="Sprite2D" parent="Env"]
@@ -708,12 +707,10 @@ texture = ExtResource("7_v8c5a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/HouseHayStone2/StaticBody2D"]
 position = Vector2(-2.3, -16.1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2ejwo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Env/HouseHayStone2/StaticBody2D"]
 position = Vector2(33.3, 38)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nfhju")
 
 [node name="HouseHayStone5" type="Sprite2D" parent="Env"]
@@ -726,12 +723,10 @@ texture = ExtResource("7_v8c5a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/HouseHayStone5/StaticBody2D"]
 position = Vector2(-2.3, -16.1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2ejwo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Env/HouseHayStone5/StaticBody2D"]
 position = Vector2(33.3, 38)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nfhju")
 
 [node name="HouseHayStone3" type="Sprite2D" parent="Env"]
