@@ -345,7 +345,7 @@ script = ExtResource("9_4ds65")
 script = ExtResource("12_c7wod")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.3
+energy = 0.15
 texture = ExtResource("10_oitew")
 texture_scale = 2.0
 
