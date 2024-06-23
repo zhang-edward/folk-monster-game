@@ -11,15 +11,15 @@ extends Node2D
 
 const POWER_UPS = [
 	{
-		"name": "Attack Up",
+		"name": "...inflict horrible wounds!",
 		"type": PlayerVariables.PowerUpTypes.AttackUp,
 		"description": "Increase damage of basic attack by 5",
 		"cost": 10
 	},
 	{
-		"name": "Attack Up",
-		"type": PlayerVariables.PowerUpTypes.AttackUp,
-		"description": "Increase damage of basic attack by 5",
+		"name": "...slash and tear in a frenzy!",
+		"type": PlayerVariables.PowerUpTypes.AttackSpeed,
+		"description": "Increase attack speed by 10%",
 		"cost": 10
 	},
 #	{
@@ -29,21 +29,21 @@ const POWER_UPS = [
 #		"cost": 2
 #	},
 	{
-		"name": "Speed Up",
+		"name": "...run faster than the wind!",
 		"type": PlayerVariables.PowerUpTypes.SpeedUp,
 		"description": "Increase movement speed by 10",
 		"cost": 10
 	},
 	{
-		"name": "Time Warp",
+		"name": "...make long nights feel longer!",
 		"type": PlayerVariables.PowerUpTypes.TimeWarp,
 		"description": "Increase length of the night by 5 seconds",
 		"cost": 25
 	},
 	{
-		"name": "Soul Harvest Up",
-		"type": PlayerVariables.PowerUpTypes.SoulHarvest,
-		"description": "Harvest 2 souls per kill",
+		"name": "...strike terror into the hearts of all!",
+		"type": PlayerVariables.PowerUpTypes.InfamyGain,
+		"description": "Double the amount of infamy gained per kill",
 		"cost": 50
 	},
 #	{
@@ -54,9 +54,9 @@ const POWER_UPS = [
 #		"cost": 3
 #	},
 	{
-		"name": "Lunge Damage",
+		"name": "...leap with deadly force!",
 		"type": PlayerVariables.PowerUpTypes.LungeDamage,
-		"description": "Increase lunge damage",
+		"description": "Increase lunge damage by 5",
 		"cost": 10
 	},
 #	{
@@ -69,7 +69,7 @@ const POWER_UPS = [
 ]
 
 func _ready():
-	score.text = "Available Points: " + str(_player_variables.player_score)
+	score.text = "Infamy: " + str(_player_variables.player_score)
 	var random_powerups = POWER_UPS.duplicate()
 	randomize()
 	random_powerups.shuffle()
@@ -80,7 +80,7 @@ func _ready():
 	PlayerVariables.player_score_updated.connect(on_score_updated)
 		
 func on_score_updated():
-	score.text = "Available Points: " + str(_player_variables.player_score)
+	score.text = "Infamy: " + str(_player_variables.player_score)
 
 func on_continue():
 	SceneTransition.change_scene_to_file("res://scenes/main.tscn")

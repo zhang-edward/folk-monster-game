@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyleykjlp2so0"]
+[gd_scene load_steps=18 format=3 uid="uid://dyleykjlp2so0"]
 
 [ext_resource type="Script" path="res://scripts/Villager.gd" id="1_pc0l1"]
 [ext_resource type="PackedScene" uid="uid://co01661atigyf" path="res://prefabs/DamageNumber.tscn" id="2_nhld0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/fsm/ChaseState.gd" id="6_vjrj5"]
 [ext_resource type="AudioStream" uid="uid://c1t06gav0qjiu" path="res://sfx/slash.wav" id="7_86iqb"]
 [ext_resource type="Script" path="res://scripts/fsm/GuardAttack.gd" id="8_ftmgw"]
+[ext_resource type="Script" path="res://scripts/fsm/LeaveHomeState.gd" id="9_y3w30"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lihtq"]
 radius = 6.0
@@ -80,7 +81,7 @@ frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_xedbn")
-initial_state = NodePath("Patrol")
+initial_state = NodePath("LeaveHome")
 
 [node name="Patrol" type="Node" parent="StateMachine"]
 script = ExtResource("5_tsti6")
@@ -91,6 +92,9 @@ script = ExtResource("6_vjrj5")
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("8_ftmgw")
 ATTACK_FRAME = 1
+
+[node name="LeaveHome" type="Node" parent="StateMachine"]
+script = ExtResource("9_y3w30")
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_pq078")

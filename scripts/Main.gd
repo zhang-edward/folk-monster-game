@@ -23,6 +23,7 @@ func _ready():
 
 func on_timer_tick():
 	if time_remaining == 0:
+		_player_variables.generation_number += 1
 		SceneTransition.change_scene_to_file("res://scenes/PowerUpSelect.tscn")
 	else:
 		time_remaining -= 1

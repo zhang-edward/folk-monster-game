@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var player: Player = get_node("/root/Main/Player") as Player
 @export var damage_number: PackedScene
 @export var is_guard: bool = false
+@onready var _health
 
 var _corpse_scene = preload ("res://prefabs/Corpse.tscn")
 var _effect_scene = preload ("res://prefabs/Effect.tscn")
@@ -14,10 +15,14 @@ var _blood_splatter: SpriteFrames = preload ("res://animations/BloodSplatter.tre
 var _blood_splatter_particles: PackedScene = preload ("res://prefabs/BloodSplatterParticles.tscn")
 var effect = null
 
-var _health = 100
 const FLEE_DIST_THRESHOLD = 150
+const VILLAGER_BASE_HEALTH = 100
+const GUARD_BASE_HEALTH = 150
+const HEALTH_INCR = 25
+const ROUND_PER_HEALTH_INCR = 5
 
 func _ready():
+	_health = calculate_round_health()
 	if is_guard:
 		var guard_num = randi() % 2 + 1
 		_sprite.frames = load("res://animations/GuardVillager" + str(guard_num) + ".tres")
@@ -25,6 +30,13 @@ func _ready():
 	else:
 		var villager_num = randi() % 4 + 1
 		_sprite.frames = load("res://animations/Villager" + str(villager_num) + ".tres")
+
+
+func calculate_round_health():
+	# Make villager health increase every few rounds
+	var base_health = GUARD_BASE_HEALTH if is_guard else VILLAGER_BASE_HEALTH
+	return base_health + (int(_player_variables.generation_number) / int(ROUND_PER_HEALTH_INCR)) * HEALTH_INCR
+	
 
 func damage(amt: int):
 	_health -= amt

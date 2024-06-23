@@ -759,13 +759,16 @@ volume_db = 2.08
 autoplay = true
 
 [node name="VillagerSpawner" parent="." instance=ExtResource("17_a0n03")]
-position = Vector2(-640, 847)
+position = Vector2(-537, 562)
 
 [node name="VillagerSpawner2" parent="." instance=ExtResource("17_a0n03")]
-position = Vector2(328, 382)
+position = Vector2(764, 790)
 
 [node name="VillagerSpawner3" parent="." instance=ExtResource("17_a0n03")]
-position = Vector2(-808, -284)
+position = Vector2(-481, -438)
 
 [node name="VillagerSpawner4" parent="." instance=ExtResource("17_a0n03")]
-position = Vector2(724, -378)
+position = Vector2(392, -115)
+
+[node name="VillagerSpawner5" parent="." instance=ExtResource("17_a0n03")]
+position = Vector2(-1134, -5)
