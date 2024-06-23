@@ -12,6 +12,7 @@ var _t = 0
 var _last_char = ""
 
 @export var voice: AudioStreamPlayer2D
+@export var skippable: bool = false
 @onready var voice_timer: Timer = $VoiceTimer
 
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +24,12 @@ func init(txt: String):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and skippable:
+		visible_characters = text.length()
+		voice_timer.stop()
+		dialogue_finished.emit()
+		return
+
 	if _t > _scroll_interval:
 		_t = 0
 		if visible_characters < text.length():
