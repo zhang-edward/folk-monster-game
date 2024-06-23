@@ -25,7 +25,7 @@ damage_number = ExtResource("2_784rf")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_x5ed0")
-animation = &"run"
+animation = &"walk"
 autoplay = "idle"
 offset = Vector2(2.08165e-12, -2)
 

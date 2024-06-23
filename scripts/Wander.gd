@@ -22,7 +22,7 @@ func update(_delta: float):
 	if dist_to_player <= Villager.FLEE_DIST_THRESHOLD:
 		villager._state_machine.transition_to("Flee")
 	
-	villager.velocity = rand_direction * IDLE_SPEED
+	villager.velocity = rand_direction.normalized() * IDLE_SPEED
 	sprite.flip_h = villager.velocity.x < 0
 	villager.move_and_slide()
 
@@ -35,6 +35,7 @@ func enter(msg:={}):
 	move_to_idle_timer.connect("timeout", callable)
 	add_sibling(move_to_idle_timer)
 	rand_direction = directions.pick_random()
+	sprite.play("walk")
 	
 func exit():
 	if move_to_idle_timer != null:

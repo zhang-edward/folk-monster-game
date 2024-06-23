@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://b136y2lye8q4w"]
+[gd_scene load_steps=17 format=3 uid="uid://dyleykjlp2so0"]
 
 [ext_resource type="Script" path="res://scripts/Villager.gd" id="1_pc0l1"]
-[ext_resource type="PackedScene" path="res://prefabs/DamageNumber.tscn" id="2_nhld0"]
-[ext_resource type="SpriteFrames" uid="uid://djo4dx3hhoh1l" path="res://animations/GuardVillager1.tres" id="3_gcfgj"]
+[ext_resource type="PackedScene" uid="uid://co01661atigyf" path="res://prefabs/DamageNumber.tscn" id="2_nhld0"]
+[ext_resource type="SpriteFrames" uid="uid://bw731x4vtmn0l" path="res://animations/GuardVillager1.tres" id="3_gcfgj"]
 [ext_resource type="Texture2D" uid="uid://khjfpp8apav4" path="res://sprites/villager/stab.png" id="4_5l6yx"]
 [ext_resource type="Script" path="res://scripts/fsm/StateMachine.gd" id="4_xedbn"]
 [ext_resource type="Script" path="res://scripts/fsm/PatrolState.gd" id="5_tsti6"]
