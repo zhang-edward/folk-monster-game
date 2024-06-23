@@ -55,7 +55,7 @@ const POWER_UPS = [
 #	},
 	{
 		"name": "Lunge Damage",
-		"type": PlayerVariables.PowerUpTypes.Lunge,
+		"type": PlayerVariables.PowerUpTypes.LungeDamage,
 		"description": "Increase lunge damage",
 		"cost": 10
 	},
