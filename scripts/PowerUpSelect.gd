@@ -36,14 +36,16 @@ const POWER_UPS = [
 	},
 	{
 		"name": "Time Warp",
+		"type": PlayerVariables.PowerUpTypes.TimeWarp,
 		"description": "Increase length of the night by 5 seconds",
 		"cost": 25
 	},
 	{
 		"name": "Soul Harvest Up",
+		"type": PlayerVariables.PowerUpTypes.SoulHarvest,
 		"description": "Harvest 2 souls per kill",
 		"cost": 50
-	}
+	},
 #	{
 #		"name": "Acid Spit",
 #		"type": PlayerVariables.PowerUpTypes.AcidSpit,
